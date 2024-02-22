@@ -5,10 +5,13 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
+  Slide,
   Stack,
   Typography,
+  Zoom,
 } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import React from "react";
 
 export type BaseModalProps = {
   isOpen: boolean;
@@ -18,6 +21,11 @@ export type BaseModalProps = {
   children: React.ReactNode;
 };
 
+const Transition2 = React.forwardRef(function Transition2(props, ref) {
+  // @ts-ignore
+  return <Zoom ref={ref} style={{ transformOrigin: "center" }} {...props} />;
+});
+
 export default function BaseModal({
   isOpen,
   title,
@@ -26,8 +34,14 @@ export default function BaseModal({
   children,
 }: BaseModalProps) {
   return (
-    <Dialog open={isOpen} fullWidth={fullWidth} onClose={handleClose}>
-      <DialogTitle sx={{ backgroundColor: `customGrey.light` }}>
+    <Dialog
+      open={isOpen}
+      fullWidth={fullWidth}
+      onClose={handleClose}
+      // @ts-ignore
+      TransitionComponent={Transition2}
+    >
+      <DialogTitle>
         <Stack
           direction="row"
           alignItems="center"
