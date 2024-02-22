@@ -38,7 +38,7 @@ export const pallette = {
     dark: "rgb(194, 128, 5)",
   },
   customGrey: {
-    light: "#999",
+    light: "#f0f2f5",
     main: "#777",
     dark: "#333",
   },

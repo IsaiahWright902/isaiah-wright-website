@@ -1,8 +1,16 @@
 "use client";
-
 import { Box, Container, CssBaseline, useMediaQuery } from "@mui/material";
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import { pallette } from "./palette";
+import ModalRegistry from "@/components/Modals/ModalRegistry";
+
+const dialogOverride = {
+  styleOverrides: {
+    root: {
+      padding: "16px",
+    },
+  },
+};
 
 const themeOptions: ThemeOptions = {
   palette: pallette,
@@ -29,6 +37,12 @@ const themeOptions: ThemeOptions = {
       fontSize: "16px",
     },
   },
+  components: {
+    MuiDialog: dialogOverride,
+    MuiDialogActions: dialogOverride,
+    MuiDialogContent: dialogOverride,
+    MuiDialogTitle: dialogOverride,
+  },
   breakpoints: {
     values: {
       xs: 0,
@@ -54,6 +68,7 @@ export default function ThemeRegistry({
       <CssBaseline />
       {/* <body> */}
       <Box width="100%" minHeight="100vh">
+        <ModalRegistry />
         <Container
           sx={{
             padding: isMobile ? "16px " : "64px 128px",
