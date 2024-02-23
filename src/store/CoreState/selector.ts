@@ -12,7 +12,13 @@ const message = createSelector(coreSelector, (core) => {
   return core.message;
 });
 
+const themePreference = createSelector(coreSelector, (core) => core.theme);
+
+const userColor = createSelector(coreSelector, (core) => core.userColor);
+
 export const coreSelectors = {
   message,
   isInitialVisit,
+  themePreference,
+  userColor,
 };

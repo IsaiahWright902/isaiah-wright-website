@@ -13,9 +13,16 @@ export default function Init({ children }: { children: React.ReactNode }) {
     if (isInitialVisit) {
       setTimeout(() => {
         dispatch(modalActions.open("welcomeModal"));
-      }, 2000);
+      }, 1000);
     }
   }, [isInitialVisit, dispatch]);
+
+  //hides color picker error - devs are aware fix is coming
+  const error = console.error;
+  console.error = (...args: any) => {
+    if (/defaultProps/.test(args[0])) return;
+    error(...args);
+  };
 
   return <>{children}</>;
 }

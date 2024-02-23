@@ -10,15 +10,25 @@ import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import { pallette } from "./palette";
 import ModalRegistry from "@/components/Modals/ModalRegistry";
 import { Poppins, Inter } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { coreSelectors } from "@/store/CoreState/selector";
+import { coreActions } from "@/store/CoreState/reducer";
 
 const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
   style: ["normal"],
   subsets: ["latin"],
   fallback: ["Geneva, Helvetica, sans-serif"],
+  display: "swap",
 });
 
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  fallback: ["Geneva, Helvetica, sans-serif"],
+});
 const dialogOverride = {
   styleOverrides: {
     root: {
@@ -28,7 +38,7 @@ const dialogOverride = {
 };
 
 const typography = {
-  fontFamily: inter.style.fontFamily,
+  fontFamily: poppins.style.fontFamily,
   h1: {
     fontSize: "38px",
     fontWeight: 600,
@@ -41,17 +51,33 @@ const typography = {
   },
   h4: {
     fontSize: "24px",
+    fontWeight: 300,
   },
   h5: {
     fontSize: "18px",
-    fontWeight: 600,
+    fontWeight: 100,
   },
   body1: {
     fontSize: "16px",
   },
 };
 
-const breakPoints = {
+const components = {
+  MuiDialog: dialogOverride,
+  MuiDialogActions: dialogOverride,
+  MuiDialogContent: dialogOverride,
+  MuiDialogTitle: dialogOverride,
+  MuiButton: {
+    styleOverrides: {
+      root: {
+        textTransform: "unset",
+        boxShadow: "none",
+      },
+    },
+  },
+};
+
+const breakpoints = {
   values: {
     xs: 0,
     sm: 600,
@@ -59,13 +85,6 @@ const breakPoints = {
     lg: 1200,
     xl: 1536,
   },
-};
-
-const componentOverrides = {
-  MuiDialog: dialogOverride,
-  MuiDialogActions: dialogOverride,
-  MuiDialogContent: dialogOverride,
-  MuiDialogTitle: dialogOverride,
 };
 
 const themeOptions: ThemeOptions = {
@@ -84,10 +103,11 @@ const themeOptions: ThemeOptions = {
     },
     h4: {
       fontSize: "24px",
+      fontWeight: 400,
     },
     h5: {
       fontSize: "18px",
-      fontWeight: 600,
+      fontWeight: 100,
     },
     body1: {
       fontSize: "16px",
@@ -118,20 +138,32 @@ const themeOptions: ThemeOptions = {
   },
 };
 
-const lightTheme = createTheme({
-  ...themeOptions,
+export const lightTheme = createTheme({
+  palette: pallette,
   typography: {
+    ...typography,
     allVariants: {
       color: "black !important",
+      fontWeight: 300,
     },
   },
   components: {
+    ...components,
     MuiButton: {
       styleOverrides: {
         root: {
-          color: "black",
+          color: "white",
           textTransform: "unset",
           boxShadow: "none",
+        },
+        contained: {
+          color: "white",
+        },
+        outlined: {
+          color: "black",
+        },
+        text: {
+          color: "black",
         },
       },
     },
@@ -149,17 +181,28 @@ const lightTheme = createTheme({
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          background: "none",
+        },
+      },
+    },
   },
+  breakpoints: breakpoints,
 });
 
-const darkTheme = createTheme({
-  ...themeOptions,
+export const darkTheme = createTheme({
+  palette: pallette,
   typography: {
+    ...typography,
     allVariants: {
+      fontWeight: 300,
       color: "white !important",
     },
   },
   components: {
+    ...components,
     MuiButton: {
       styleOverrides: {
         root: {
@@ -167,19 +210,36 @@ const darkTheme = createTheme({
           textTransform: "unset",
           boxShadow: "none",
         },
+        contained: {
+          color: "white",
+        },
+        outlined: {
+          color: "white",
+        },
+        text: {
+          color: "white",
+        },
       },
     },
     MuiDialogTitle: {
       styleOverrides: {
         root: {
-          background: "black",
+          background: "#181818",
         },
       },
     },
     MuiDialogContent: {
       styleOverrides: {
         root: {
-          background: "black",
+          background: "#121212",
+          color: "white",
+        },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          background: "none",
         },
       },
     },
@@ -192,6 +252,7 @@ const darkTheme = createTheme({
       },
     },
   },
+  breakpoints: breakpoints,
 });
 
 export const theme = createTheme(themeOptions);
@@ -201,21 +262,27 @@ export default function ThemeRegistry({
 }: {
   children: React.ReactNode;
 }) {
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const [toggleTheme, setToggleTheme] = useState(true);
+  const themePreference = useSelector(coreSelectors.themePreference);
+
+  const handleToggleTheme = () => {
+    dispatch(coreActions.setThemePreference(!themePreference));
+  };
 
   return (
-    <ThemeProvider theme={toggleTheme ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themePreference ? lightTheme : darkTheme}>
       <CssBaseline />
 
       <Box
         width="100%"
         minHeight="100vh"
-        sx={{ background: toggleTheme ? "white" : "black" }}
+        sx={{
+          background: themePreference ? "white" : "#1b1b1b",
+          transition: "all 1s",
+        }}
       >
-        <Button onClick={() => setToggleTheme(!toggleTheme)}>
-          Toggle theme
-        </Button>
+        <Button onClick={handleToggleTheme}>Toggle theme</Button>
         <ModalRegistry />
         <Container
           sx={{

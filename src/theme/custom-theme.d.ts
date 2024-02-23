@@ -2,18 +2,18 @@ import { CSSProperties } from "react";
 
 declare module "@mui/material/styles" {
   interface Palette {
-    green: CSSProperties;
-    red: CSSProperties;
-    blue: CSSProperties;
-    purple: CSSProperties;
-    pink: CSSProperties;
-    yellow: CSSProperties;
-    orange: CSSProperties;
-    customGrey: CSSProperties;
-    black: CSSProperties;
+    green: PaletteColor;
+    red: PaletteColor;
+    blue: PaletteColor;
+    purple: PaletteColor;
+    pink: PaletteColor;
+    yellow: PaletteColor;
+    orange: PaletteColor;
+    customGrey: PaletteColor;
+    black: PaletteColor;
   }
 
-  export interface PaletteOptions {
+  interface PaletteOptions {
     green: PaletteColorOptions;
     red: PaletteColorOptions;
     blue: PaletteColorOptions;
@@ -23,6 +23,12 @@ declare module "@mui/material/styles" {
     orange: PaletteColorOptions;
     customGrey: PaletteColorOptions;
     black: PaletteColorOptions;
+  }
+
+  interface PaletteColor {
+    light?: string;
+    main?: string;
+    dark?: string;
   }
 
   interface PaletteColorOptions {

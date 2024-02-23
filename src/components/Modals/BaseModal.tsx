@@ -49,7 +49,11 @@ export default function BaseModal({
         >
           <Typography variant="h4">{title}</Typography>
           <IconButton onClick={handleClose}>
-            <HighlightOffIcon />
+            <HighlightOffIcon
+              sx={{
+                fill: `#777`,
+              }}
+            />
           </IconButton>
         </Stack>
       </DialogTitle>

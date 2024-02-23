@@ -1,7 +1,7 @@
 "use client";
 
 import BaseModal from "@/components/Modals/BaseModal";
-import WelcomeModal from "@/components/Modals/WelcomeModal";
+import WelcomeModal from "@/components/Modals/WelcomeModal/WelcomeModal";
 import { coreActions } from "@/store/CoreState/reducer";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { modalActions } from "@/store/ModalState/reducer";
