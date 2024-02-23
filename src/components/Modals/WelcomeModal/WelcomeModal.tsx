@@ -33,6 +33,7 @@ export default function WelcomeModal() {
   const handleClose = () => {
     dispatch(coreActions.setInitialVisit(false));
     dispatch(modalActions.close("welcomeModal"));
+    setCurrentStep(WelcomeSteps.Step1);
   };
 
   const handleSetUserColor = (val: string) => {
@@ -63,7 +64,11 @@ export default function WelcomeModal() {
       )}
 
       {currentStep === WelcomeSteps.Step3 && (
-        <WelcomeStep3 userColor={userColor} handleClose={handleClose} />
+        <WelcomeStep3
+          userColor={userColor}
+          handleClose={handleClose}
+          setCurrentStep={setCurrentStep}
+        />
       )}
 
       {currentStep === WelcomeSteps.Step4 && (

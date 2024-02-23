@@ -25,7 +25,7 @@ const initialState: SkillState = {
     },
     {
       name: "TypeScript",
-      yearsOfExperience: 2,
+      yearsOfExperience: 3,
       proficiency: SkillProficiency.Advanced,
     },
   ],

@@ -6,9 +6,11 @@ import { WelcomeSteps } from "../WelcomeModal";
 export default function WelcomeStep3({
   userColor,
   handleClose,
+  setCurrentStep,
 }: {
   userColor: string;
   handleClose: () => void;
+  setCurrentStep: React.Dispatch<SetStateAction<WelcomeSteps>>;
 }) {
   return (
     <>
@@ -42,6 +44,13 @@ export default function WelcomeStep3({
           onClick={handleClose}
         >
           Close Modal
+        </Button>
+        <Button
+          fullWidth
+          variant="text"
+          onClick={() => setCurrentStep(WelcomeSteps.Step2)}
+        >
+          Back
         </Button>
       </Stack>
     </>
