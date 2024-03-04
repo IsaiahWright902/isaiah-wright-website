@@ -6,7 +6,14 @@ import {
   CssBaseline,
   useMediaQuery,
 } from "@mui/material";
-import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
+import {
+  BreakpointsOptions,
+  Components,
+  createTheme,
+  Theme,
+  ThemeOptions,
+  ThemeProvider,
+} from "@mui/material/styles";
 import { pallette } from "./palette";
 import ModalRegistry from "@/components/Modals/ModalRegistry";
 import { Poppins, Inter } from "next/font/google";
@@ -14,9 +21,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { coreActions } from "@/store/CoreState/reducer";
+import { TypographyOptions } from "@mui/material/styles/createTypography";
+import Navbar from "@/components/Navbar/Navbar";
 
 const inter = Inter({
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   style: ["normal"],
   subsets: ["latin"],
   fallback: ["Geneva, Helvetica, sans-serif"],
@@ -37,14 +46,24 @@ const dialogOverride = {
   },
 };
 
-const typography = {
+const breakpoints: BreakpointsOptions = {
+  values: {
+    xs: 0,
+    sm: 600,
+    md: 900,
+    lg: 1200,
+    xl: 1536,
+  },
+};
+
+const typography: TypographyOptions = {
   fontFamily: poppins.style.fontFamily,
   h1: {
-    fontSize: "38px",
-    fontWeight: 600,
+    fontSize: "47px",
+    fontWeight: 400,
   },
   h2: {
-    fontSize: "32px",
+    fontSize: "38px",
   },
   h3: {
     fontSize: "28px",
@@ -54,15 +73,26 @@ const typography = {
     fontWeight: 300,
   },
   h5: {
-    fontSize: "18px",
+    fontSize: "20px",
     fontWeight: 100,
   },
   body1: {
+    fontSize: "18px",
+  },
+  body2: {
+    fontSize: "18px",
+    fontWeight: 400,
+  },
+  subtitle1: {
     fontSize: "16px",
+  },
+  subtitle2: {
+    fontSize: "16px",
+    fontWeight: 400,
   },
 };
 
-const components = {
+const components: Components<Omit<Theme, "components">> = {
   MuiDialog: dialogOverride,
   MuiDialogActions: dialogOverride,
   MuiDialogContent: dialogOverride,
@@ -77,65 +107,9 @@ const components = {
   },
 };
 
-const breakpoints = {
-  values: {
-    xs: 0,
-    sm: 600,
-    md: 900,
-    lg: 1200,
-    xl: 1536,
-  },
-};
-
 const themeOptions: ThemeOptions = {
   palette: pallette,
-  typography: {
-    fontFamily: inter.style.fontFamily,
-    h1: {
-      fontSize: "38px",
-      fontWeight: 600,
-    },
-    h2: {
-      fontSize: "32px",
-    },
-    h3: {
-      fontSize: "28px",
-    },
-    h4: {
-      fontSize: "24px",
-      fontWeight: 400,
-    },
-    h5: {
-      fontSize: "18px",
-      fontWeight: 100,
-    },
-    body1: {
-      fontSize: "16px",
-    },
-  },
-  components: {
-    MuiDialog: dialogOverride,
-    MuiDialogActions: dialogOverride,
-    MuiDialogContent: dialogOverride,
-    MuiDialogTitle: dialogOverride,
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "unset",
-          boxShadow: "none",
-        },
-      },
-    },
-  },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
+  breakpoints: breakpoints,
 };
 
 export const lightTheme = createTheme({
@@ -251,6 +225,20 @@ export const darkTheme = createTheme({
         },
       },
     },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          background: "#f0f2f5",
+        },
+      },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          background: "#181818",
+        },
+      },
+    },
   },
   breakpoints: breakpoints,
 });
@@ -262,18 +250,12 @@ export default function ThemeRegistry({
 }: {
   children: React.ReactNode;
 }) {
-  const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const useLightMode = useSelector(coreSelectors.useLightMode);
-
-  const handleToggleTheme = () => {
-    dispatch(coreActions.setUseLightMode(!useLightMode));
-  };
 
   return (
     <ThemeProvider theme={useLightMode ? lightTheme : darkTheme}>
       <CssBaseline />
-
       <Box
         width="100%"
         minHeight="100vh"
@@ -282,11 +264,12 @@ export default function ThemeRegistry({
           transition: "all 1s",
         }}
       >
-        <Button onClick={handleToggleTheme}>Toggle theme</Button>
+        <Navbar />
         <ModalRegistry />
         <Container
           sx={{
             padding: isMobile ? "16px " : "64px 128px",
+            minHeight: "100vh",
           }}
         >
           {children}

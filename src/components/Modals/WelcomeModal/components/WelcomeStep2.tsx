@@ -1,5 +1,4 @@
 "use client";
-
 import { theme } from "@/theme/ThemeRegistry";
 import { hexToRgbA } from "@/utils/general-utils";
 import { Typography, Stack, Box, Button } from "@mui/material";
