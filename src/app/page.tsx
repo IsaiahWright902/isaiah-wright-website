@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Home() {
   const dispatch = useDispatch();
   const message = useSelector(coreSelectors.message);
+  const userColor = useSelector(coreSelectors.userColor);
 
   const handleClick = () => {
     // dispatch(coreActions.changeMessage("Changed message"));
@@ -24,7 +25,15 @@ export default function Home() {
   return (
     <Stack>
       <Typography>{message}</Typography>
-      <Button onClick={handleClick}>Change Open Modal</Button>
+      <Button
+        variant="contained"
+        sx={{
+          background: userColor,
+        }}
+        onClick={handleClick}
+      >
+        Change Open Modal
+      </Button>
     </Stack>
   );
 }

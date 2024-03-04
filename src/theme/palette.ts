@@ -4,22 +4,22 @@ export const pallette = {
   },
   green: {
     light: "#55c57a",
-    main: "#2fad59",
+    main: "#3bb273",
     dark: "#1a893f",
   },
   red: {
     light: "#f04e4e",
-    main: "rgb(197, 20, 20)",
+    main: "#e15554",
     dark: "#c32032",
   },
   blue: {
     light: "#6fcff6",
-    main: "#005da6",
+    main: "#4d9de0",
     dark: "#064794",
   },
   purple: {
     light: "#873fcf",
-    main: "#663399",
+    main: "#7768ae",
     dark: "#542a7d",
   },
   pink: {
@@ -29,12 +29,12 @@ export const pallette = {
   },
   yellow: {
     light: "#f2d82c",
-    main: "#fddd00",
+    main: "#e1bc29",
     dark: "#c8ad00",
   },
   orange: {
     light: "rgb(255, 181, 43)",
-    main: "#ffa500",
+    main: "#f8961e",
     dark: "rgb(194, 128, 5)",
   },
   customGrey: {

@@ -77,6 +77,13 @@ export default function WelcomeStep2({
       >
         <Button
           fullWidth
+          variant="outlined"
+          onClick={() => setCurrentStep(WelcomeSteps.Step4)}
+        >
+          I don&apos;t like any of these colors...
+        </Button>
+        <Button
+          fullWidth
           style={{
             background: userColor,
           }}
@@ -85,13 +92,7 @@ export default function WelcomeStep2({
         >
           Continue
         </Button>
-        <Button
-          fullWidth
-          variant="outlined"
-          onClick={() => setCurrentStep(WelcomeSteps.Step4)}
-        >
-          I don&apos;t like any of these colors...
-        </Button>
+
         <Button
           fullWidth
           variant="text"
