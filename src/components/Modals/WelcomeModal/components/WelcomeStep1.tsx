@@ -7,12 +7,12 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 export default function WelcomeStep1({
-  themePreference,
+  useLightMode,
   userColor,
   toggleThemePreference,
   setCurrentStep,
 }: {
-  themePreference: boolean;
+  useLightMode: boolean;
   userColor: string;
   toggleThemePreference: (val: boolean) => void;
   setCurrentStep: React.Dispatch<SetStateAction<WelcomeSteps>>;
@@ -47,13 +47,11 @@ export default function WelcomeStep1({
             borderRadius: "16px",
             cursor: "pointer",
             transition: "all 0.3s",
-            boxShadow: themePreference ? `0 4px 8px rgba(0, 0, 0, 0.4)` : "",
+            boxShadow: useLightMode ? `0 4px 8px rgba(0, 0, 0, 0.4)` : "",
             borderColor: "#fddd00",
             "&:hover": {
               boxShadow: `0 4px 8px ${
-                themePreference
-                  ? "rgba(0, 0, 0, 0.4)"
-                  : hexToRgbA("#f0f2f5", 0.4)
+                useLightMode ? "rgba(0, 0, 0, 0.4)" : hexToRgbA("#f0f2f5", 0.4)
               } `,
             },
           }}
@@ -74,12 +72,10 @@ export default function WelcomeStep1({
             borderRadius: "16px",
             cursor: "pointer",
             transition: "all 0.3s",
-            boxShadow: !themePreference ? "0 4px 8px rgba(0, 0, 0, 0.4)" : "",
+            boxShadow: !useLightMode ? "0 4px 8px rgba(0, 0, 0, 0.4)" : "",
             "&:hover": {
               boxShadow: `0 4px 8px ${
-                themePreference
-                  ? "rgba(0, 0, 0, 0.4)"
-                  : hexToRgbA("#f0f2f5", 0.4)
+                useLightMode ? "rgba(0, 0, 0, 0.4)" : hexToRgbA("#f0f2f5", 0.4)
               } `,
             },
           }}

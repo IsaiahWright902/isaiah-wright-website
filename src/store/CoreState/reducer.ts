@@ -3,15 +3,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type CoreState = {
   initialVisit: boolean;
   message: string;
-  theme: boolean;
+  useLightMode: boolean;
   userColor: string;
 };
 
 const initialState: CoreState = {
   initialVisit: true,
   message: "hello",
-  theme: true,
-  userColor: "#2fad59",
+  useLightMode: true,
+  userColor: "#3bb273",
 };
 
 export const CoreSlice = createSlice({
@@ -24,8 +24,8 @@ export const CoreSlice = createSlice({
     changeMessage: (state, action: PayloadAction<string>) => {
       state.message = action.payload;
     },
-    setThemePreference: (state, action: PayloadAction<boolean>) => {
-      state.theme = action.payload;
+    setUseLightMode: (state, action: PayloadAction<boolean>) => {
+      state.useLightMode = action.payload;
     },
     setUserColor: (state, action: PayloadAction<string>) => {
       state.userColor = action.payload;

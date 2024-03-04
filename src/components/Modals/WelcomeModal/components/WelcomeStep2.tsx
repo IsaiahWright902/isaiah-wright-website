@@ -7,12 +7,12 @@ import { SetStateAction } from "react";
 import { WelcomeSteps } from "../WelcomeModal";
 
 export default function WelcomeStep2({
-  themePreference,
+  useLightMode,
   userColor,
   setCurrentStep,
   handleSetUserColor,
 }: {
-  themePreference: boolean;
+  useLightMode: boolean;
   userColor: string;
   setCurrentStep: React.Dispatch<SetStateAction<WelcomeSteps>>;
   handleSetUserColor: (val: string) => void;
@@ -58,7 +58,7 @@ export default function WelcomeStep2({
               transition: "all 0.3s",
               "&:hover": {
                 boxShadow: `0 4px 8px ${
-                  themePreference
+                  useLightMode
                     ? "rgba(0, 0, 0, 0.4)"
                     : hexToRgbA("#f0f2f5", 0.4)
                 } `,

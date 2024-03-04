@@ -10,7 +10,6 @@ export default function WelcomeStep4({
   setCurrentStep,
   handleSetUserColor,
 }: {
-  themePreference: boolean;
   userColor: string;
   setCurrentStep: React.Dispatch<SetStateAction<WelcomeSteps>>;
   handleSetUserColor: (val: string) => void;

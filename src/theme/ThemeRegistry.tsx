@@ -264,21 +264,21 @@ export default function ThemeRegistry({
 }) {
   const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const themePreference = useSelector(coreSelectors.themePreference);
+  const useLightMode = useSelector(coreSelectors.useLightMode);
 
   const handleToggleTheme = () => {
-    dispatch(coreActions.setThemePreference(!themePreference));
+    dispatch(coreActions.setUseLightMode(!useLightMode));
   };
 
   return (
-    <ThemeProvider theme={themePreference ? lightTheme : darkTheme}>
+    <ThemeProvider theme={useLightMode ? lightTheme : darkTheme}>
       <CssBaseline />
 
       <Box
         width="100%"
         minHeight="100vh"
         sx={{
-          background: themePreference ? "white" : "#1b1b1b",
+          background: useLightMode ? "white" : "#1b1b1b",
           transition: "all 1s",
         }}
       >
