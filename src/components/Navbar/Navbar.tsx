@@ -21,8 +21,11 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { coreActions } from "@/store/CoreState/reducer";
+import { useRouter } from "next/navigation";
 
 export default function Navbar({ links }: { links: PortfolioLink[] }) {
+  const router = useRouter();
+
   const dispatch = useDispatch();
   const useLightMode = useSelector(coreSelectors.useLightMode);
   const userColor = useSelector(coreSelectors.userColor);
@@ -57,7 +60,12 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
             justifyContent="space-between"
             width={"100%"}
           >
-            <Stack direction="row" alignItems="center" width={"100%"}>
+            <Stack
+              onClick={() => router.push("/")}
+              direction="row"
+              alignItems="center"
+              width={"100%"}
+            >
               <Typography
                 variant="h6"
                 noWrap
@@ -67,12 +75,15 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
                   letterSpacing: ".3rem",
                   textDecoration: "none",
                   color: "white !important",
+                  cursor: "pointer",
                 }}
               >
                 Isaiah Wright
               </Typography>
               {!isMobile && (
-                <Typography sx={{ color: "white !important" }}>
+                <Typography
+                  sx={{ color: "white !important", cursor: "pointer" }}
+                >
                   - Full Stack Developer
                 </Typography>
               )}

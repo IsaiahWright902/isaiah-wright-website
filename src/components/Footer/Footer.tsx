@@ -79,8 +79,8 @@ export default function Footer({ links }: { links: PortfolioLink[] }) {
             />
             <FooterItem
               title="Github Repository"
-              path="/portfolio-ui"
-              handleLinkClick={handleLinkClick}
+              path="https://github.com/IsaiahWright902/isaiah-wright-website"
+              handleLinkClick={handleExternalLinkClick}
             />
           </Grid>
           {isMobile && <FooterDivider />}
