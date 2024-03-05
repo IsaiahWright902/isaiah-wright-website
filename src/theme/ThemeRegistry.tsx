@@ -17,12 +17,14 @@ import {
 import { pallette } from "./palette";
 import ModalRegistry from "@/components/Modals/ModalRegistry";
 import { Poppins, Inter } from "next/font/google";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { coreSelectors } from "@/store/CoreState/selector";
-import { coreActions } from "@/store/CoreState/reducer";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
 const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -245,6 +247,30 @@ export const darkTheme = createTheme({
 
 export const theme = createTheme(themeOptions);
 
+export type PortfolioLink = {
+  url: string;
+  name: string;
+  icon?: React.ReactNode;
+};
+
+const links: PortfolioLink[] = [
+  {
+    name: "Github",
+    url: "https://github.com/IsaiahWright902",
+    icon: <GitHubIcon sx={{ width: "20px", height: "20px" }} />,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/isaiah-wright-4b89191a3/",
+    icon: <LinkedInIcon />,
+  },
+  {
+    name: "Resume",
+    url: "https://github.com/IsaiahWright902/Resume/blob/master/IsaiahWrightResume%20.pdf",
+    icon: <PictureAsPdfIcon />,
+  },
+];
+
 export default function ThemeRegistry({
   children,
 }: {
@@ -258,13 +284,12 @@ export default function ThemeRegistry({
       <CssBaseline />
       <Box
         width="100%"
-        minHeight="100vh"
         sx={{
-          background: useLightMode ? "white" : "#1b1b1b",
+          background: useLightMode ? "white" : theme.palette.black.light,
           transition: "all 1s",
         }}
       >
-        <Navbar />
+        <Navbar links={links} />
         <ModalRegistry />
         <Container
           sx={{
@@ -274,6 +299,7 @@ export default function ThemeRegistry({
         >
           {children}
         </Container>
+        <Footer links={links} />
       </Box>
     </ThemeProvider>
   );

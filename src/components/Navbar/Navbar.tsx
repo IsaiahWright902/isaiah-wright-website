@@ -15,41 +15,14 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import { theme } from "@/theme/ThemeRegistry";
+import { PortfolioLink, theme } from "@/theme/ThemeRegistry";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { coreActions } from "@/store/CoreState/reducer";
 
-type Link = {
-  url: string;
-  name: string;
-  icon?: React.ReactNode;
-};
-
-const links: Link[] = [
-  {
-    name: "Github",
-    url: "https://github.com/IsaiahWright902",
-    icon: <GitHubIcon sx={{ width: "20px", height: "20px" }} />,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/isaiah-wright-4b89191a3/",
-    icon: <LinkedInIcon />,
-  },
-  {
-    name: "Resume",
-    url: "https://github.com/IsaiahWright902/Resume/blob/master/IsaiahWrightResume%20.pdf",
-    icon: <PictureAsPdfIcon />,
-  },
-];
-
-export default function Navbar() {
+export default function Navbar({ links }: { links: PortfolioLink[] }) {
   const dispatch = useDispatch();
   const useLightMode = useSelector(coreSelectors.useLightMode);
   const userColor = useSelector(coreSelectors.userColor);
@@ -193,6 +166,7 @@ export default function Navbar() {
                   toggleThemePreference={toggleThemePreference}
                   useLightMode={useLightMode}
                 />
+                <ChangeUserColor userColor={userColor} />
               </Stack>
             )}
           </Stack>
@@ -226,6 +200,21 @@ function LightDarkToggle({
           />
         )}
       </IconButton>
+    </Tooltip>
+  );
+}
+
+function ChangeUserColor({ userColor }: { userColor: string }) {
+  return (
+    <Tooltip title="Change Preferred Color">
+      <Box
+        width="20px"
+        height="20px"
+        borderRadius="50%"
+        sx={{
+          background: userColor,
+        }}
+      ></Box>
     </Tooltip>
   );
 }

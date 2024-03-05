@@ -43,7 +43,7 @@ export const pallette = {
     dark: "#333",
   },
   black: {
-    light: "#231f20",
+    light: "#1b1b1b",
     main: "#231f20",
     dark: "#231f20",
   },
