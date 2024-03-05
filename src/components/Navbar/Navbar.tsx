@@ -22,10 +22,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { coreActions } from "@/store/CoreState/reducer";
 import { useRouter } from "next/navigation";
+import { modalActions } from "@/store/ModalState/reducer";
 
 export default function Navbar({ links }: { links: PortfolioLink[] }) {
   const router = useRouter();
-
   const dispatch = useDispatch();
   const useLightMode = useSelector(coreSelectors.useLightMode);
   const userColor = useSelector(coreSelectors.userColor);
@@ -43,6 +43,10 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
 
   const toggleThemePreference = (val: boolean) => {
     dispatch(coreActions.setUseLightMode(val));
+  };
+
+  const removeThis = () => {
+    dispatch(modalActions.open("welcomeModal"));
   };
 
   return (
@@ -177,7 +181,10 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
                   toggleThemePreference={toggleThemePreference}
                   useLightMode={useLightMode}
                 />
-                <ChangeUserColor userColor={userColor} />
+                <ChangeUserColor
+                  handleOpenModal={removeThis}
+                  userColor={userColor}
+                />
               </Stack>
             )}
           </Stack>
@@ -215,10 +222,17 @@ function LightDarkToggle({
   );
 }
 
-function ChangeUserColor({ userColor }: { userColor: string }) {
+function ChangeUserColor({
+  userColor,
+  handleOpenModal,
+}: {
+  userColor: string;
+  handleOpenModal: () => void;
+}) {
   return (
     <Tooltip title="Change Preferred Color">
       <Box
+        onClick={handleOpenModal}
         width="20px"
         height="20px"
         borderRadius="50%"

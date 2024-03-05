@@ -5,7 +5,7 @@ import { AppStateProvider } from "@/store/store";
 import Init from "@/components/Init";
 
 export const metadata: Metadata = {
-  title: "Isaiah Wright - Portfolio",
+  title: "Isaiah Wright | Portfolio",
   description: "Isaiah Wright Portfolio!",
 };
 

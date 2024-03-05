@@ -4,7 +4,6 @@ import { PortfolioLink, theme } from "@/theme/ThemeRegistry";
 import {
   Box,
   Container,
-  Divider,
   Grid,
   Stack,
   Typography,
@@ -14,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useState } from "react";
+import UserColorDivider from "../UserColorDivider/UserColorDivider";
 
 export default function Footer({ links }: { links: PortfolioLink[] }) {
   const router = useRouter();
@@ -74,7 +74,7 @@ export default function Footer({ links }: { links: PortfolioLink[] }) {
             />
             <FooterItem
               title="Technical Decisions"
-              path="/portfolio-ui"
+              path="/technical-decisions"
               handleLinkClick={handleLinkClick}
             />
             <FooterItem
@@ -153,8 +153,9 @@ function FooterItem({
       <ArrowForwardIcon
         fontSize="small"
         sx={{
-          transition: "all 0.5s",
+          transition: "all 0.6s",
           opacity: showArrow ? 1 : 0,
+          fill: "white",
         }}
       />
     </Stack>
@@ -164,7 +165,7 @@ function FooterItem({
 function FooterDivider() {
   return (
     <Grid item xs={12}>
-      <Divider sx={{ background: "#f0f2f5 !important" }} />
+      <UserColorDivider />
     </Grid>
   );
 }

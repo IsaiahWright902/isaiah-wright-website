@@ -19,7 +19,7 @@ export default function WelcomeStep3({
         set the stage for an exciting journey through my website.
       </Typography>
       <Typography>
-        You can change these settings via the dropdown menu on the Navbar at
+        You can change these settings via the two buttons on the Navbar at
         anytime.
       </Typography>
       <Typography>

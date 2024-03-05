@@ -1,5 +1,6 @@
 "use client";
 
+import UserColorDivider from "@/components/UserColorDivider/UserColorDivider";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { theme } from "@/theme/ThemeRegistry";
 import {
@@ -13,7 +14,7 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 
-export default function Page() {
+export default function PortfolioUIPage() {
   const userColor = useSelector(coreSelectors.userColor);
 
   const colors: { color: string; name: string }[] = [
@@ -65,7 +66,7 @@ export default function Page() {
           consistency and harmony for this website.
         </Typography>
       </Stack>
-      <Divider />
+      <UserColorDivider />
       <Stack spacing={2}>
         <Typography variant="h3">Typography:</Typography>
         <Stack spacing={1}>
@@ -80,7 +81,7 @@ export default function Page() {
           <Typography variant="subtitle2">Subtitle 2 Variant</Typography>
         </Stack>
       </Stack>
-      <Divider />
+      <UserColorDivider />
       <Stack spacing={2}>
         <Typography variant="h3">Pallette:</Typography>
         <Container disableGutters>
@@ -92,7 +93,7 @@ export default function Page() {
           </Grid>
         </Container>
       </Stack>
-      <Divider />
+      <UserColorDivider />
       <Stack spacing={2}>
         <Typography variant="h3">Buttons:</Typography>
         <Stack spacing={1} direction="row">
@@ -101,15 +102,20 @@ export default function Page() {
           <Button variant="text">Text</Button>
         </Stack>
       </Stack>
-      <Divider />
+      <UserColorDivider />
     </Stack>
   );
 }
 
 function ColorDot({ color, name }: { color: string; name: string }) {
   return (
-    <Grid item>
-      <Stack spacing={1} alignItems="center" justifyContent="center">
+    <Grid item xs={3} lg={1}>
+      <Stack
+        spacing={1}
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+      >
         <Box
           width="50px"
           height="50px"
