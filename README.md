@@ -1,2 +1,2 @@
 # Isaiah Wright Portfolio Website!
-## Nothing here yet but I am activley working on in. In the meantime feel free to look around the code base or clone it and run it yourself (note: this site is still a work in progress).
+## Nothing here yet but I am activley working on it and a link to the deployed site will be here soon. In the meantime feel free to look around the code base.
