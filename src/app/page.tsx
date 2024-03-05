@@ -64,10 +64,10 @@ export default function Home() {
           <Stack
             sx={{
               textAlign: "center",
-              height: "100%", // Ensure the height of the container
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center", // Vertically center the content
+              justifyContent: "center",
               padding: "25px",
             }}
           >

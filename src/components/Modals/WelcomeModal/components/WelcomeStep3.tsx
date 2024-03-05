@@ -26,7 +26,7 @@ export default function WelcomeStep3({
         Get ready to embark on a thrilling exploration of creativity and
         innovation, where each project is a unique chapter waiting to unfold.
         So, kick back, relax, and let&apos;s discover together if I&apos;m the
-        right dev to bring your visions to life!
+        right developer to bring your visions to life!
       </Typography>
       <Stack
         direction="column"

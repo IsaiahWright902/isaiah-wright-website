@@ -92,7 +92,7 @@ export default function TechnicalDecisionsPage() {
             TypeScript takes the lead. As a developer, the presence of
             TypeScript instills a sense of confidence and clarity, fostering an
             environment where I feel more informed and empowered to tackle
-            challenges head-on, making it a wonder choice for my personal
+            challenges head-on, making it a wonderful choice for my personal
             website.
           </Typography>
           <ViewDocsButton href="https://www.typescriptlang.org/" />
