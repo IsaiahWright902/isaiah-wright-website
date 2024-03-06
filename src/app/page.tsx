@@ -1,23 +1,22 @@
 "use client";
 
 import { coreSelectors } from "@/store/CoreState/selector";
-import { modalActions } from "@/store/ModalState/reducer";
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useSelector } from "react-redux";
+import Image from "next/image";
+import HeadShot from "@public/headshotNew.jpeg";
+import { theme } from "@/theme/ThemeRegistry";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const message = useSelector(coreSelectors.message);
   const userColor = useSelector(coreSelectors.userColor);
-
-  const handleClick = () => {
-    // dispatch(coreActions.changeMessage("Changed message"));
-    dispatch(modalActions.open("welcomeModal"));
-  };
-
-  const handleClose = () => {
-    console.log("closing");
-  };
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Container disableGutters>
@@ -34,12 +33,16 @@ export default function Home() {
           transition: "all 0.5s",
         }}
       >
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={6}>
           <Stack spacing={2}>
-            <Typography variant="h5">Hi, my name is</Typography>
-            <Typography variant="h1">Isaiah Wright,</Typography>
-            <Typography variant="h3">
-              I build full stack applications :)
+            <Typography variant="h5" textAlign={{ xs: "center", md: "left" }}>
+              Hi, my name is
+            </Typography>
+            <Typography variant="h1" textAlign={{ xs: "center", md: "left" }}>
+              Isaiah Wright,
+            </Typography>
+            <Typography variant="h3" textAlign={{ xs: "center", md: "left" }}>
+              I build full stack applications {isMobile ? null : ":)"}
             </Typography>
             <Typography variant="body1">
               I have always been interested in computers and how they work. When
@@ -63,7 +66,6 @@ export default function Home() {
         <Grid item xs={12} md={6}>
           <Stack
             sx={{
-              textAlign: "center",
               height: "100%",
               display: "flex",
               flexDirection: "column",
@@ -77,8 +79,30 @@ export default function Home() {
               borderRadius="50%"
               sx={{
                 border: `2px solid ${userColor}`,
+                overflow: "hidden",
               }}
-            ></Box>
+            >
+              <Stack
+                sx={{
+                  height: "100%",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <Image
+                  src={HeadShot}
+                  alt="Headshot"
+                  width={0}
+                  height={0}
+                  style={{
+                    clipPath: "circle()",
+                    overflow: "hidden",
+                    width: "74%",
+                    height: "auto",
+                  }}
+                />
+              </Stack>
+            </Box>
           </Stack>
         </Grid>
       </Grid>
