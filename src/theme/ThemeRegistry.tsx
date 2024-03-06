@@ -285,7 +285,9 @@ export default function ThemeRegistry({
       <Box
         width="100%"
         sx={{
-          background: useLightMode ? "white" : theme.palette.black.light,
+          background: useLightMode
+            ? "rgba(255, 255, 255, 1)"
+            : theme.palette.black.light,
           transition: "all 1s",
         }}
       >

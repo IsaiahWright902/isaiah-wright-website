@@ -1,5 +1,6 @@
 "use client";
 
+import { ColorDot } from "@/components/ColorDot/ColorDot";
 import UserColorDivider from "@/components/UserColorDivider/UserColorDivider";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { theme } from "@/theme/ThemeRegistry";
@@ -104,28 +105,5 @@ export default function PortfolioUIPage() {
       </Stack>
       <UserColorDivider />
     </Stack>
-  );
-}
-
-function ColorDot({ color, name }: { color: string; name: string }) {
-  return (
-    <Grid item xs={3} lg={1}>
-      <Stack
-        spacing={1}
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-      >
-        <Box
-          width="50px"
-          height="50px"
-          borderRadius="50%"
-          sx={{
-            background: color,
-          }}
-        ></Box>
-        <Typography variant="subtitle1">{name}</Typography>
-      </Stack>
-    </Grid>
   );
 }

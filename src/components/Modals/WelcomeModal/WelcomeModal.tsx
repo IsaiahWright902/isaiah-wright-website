@@ -10,6 +10,7 @@ import WelcomeStep1 from "./components/WelcomeStep1";
 import WelcomeStep2 from "./components/WelcomeStep2";
 import WelcomeStep3 from "./components/WelcomeStep3";
 import WelcomeStep4 from "./components/WelcomeStep4";
+import { Stack } from "@mui/material";
 
 export enum WelcomeSteps {
   Step1 = 1,
@@ -44,38 +45,40 @@ export default function WelcomeModal() {
 
   return (
     <BaseModal isOpen={isOpen} title="Welcome!" handleClose={handleClose}>
-      {currentStep === WelcomeSteps.Step1 && (
-        <WelcomeStep1
-          useLightMode={useLightMode}
-          userColor={userColor}
-          toggleThemePreference={toggleThemePreference}
-          setCurrentStep={setCurrentStep}
-        />
-      )}
-      {currentStep === WelcomeSteps.Step2 && (
-        <WelcomeStep2
-          useLightMode={useLightMode}
-          userColor={userColor}
-          setCurrentStep={setCurrentStep}
-          handleSetUserColor={handleSetUserColor}
-        />
-      )}
+      <Stack pt={2} pb={2} spacing={2} minHeight="200px">
+        {currentStep === WelcomeSteps.Step1 && (
+          <WelcomeStep1
+            useLightMode={useLightMode}
+            userColor={userColor}
+            toggleThemePreference={toggleThemePreference}
+            setCurrentStep={setCurrentStep}
+          />
+        )}
+        {currentStep === WelcomeSteps.Step2 && (
+          <WelcomeStep2
+            useLightMode={useLightMode}
+            userColor={userColor}
+            setCurrentStep={setCurrentStep}
+            handleSetUserColor={handleSetUserColor}
+          />
+        )}
 
-      {currentStep === WelcomeSteps.Step3 && (
-        <WelcomeStep3
-          userColor={userColor}
-          handleClose={handleClose}
-          setCurrentStep={setCurrentStep}
-        />
-      )}
+        {currentStep === WelcomeSteps.Step3 && (
+          <WelcomeStep3
+            userColor={userColor}
+            handleClose={handleClose}
+            setCurrentStep={setCurrentStep}
+          />
+        )}
 
-      {currentStep === WelcomeSteps.Step4 && (
-        <WelcomeStep4
-          userColor={userColor}
-          setCurrentStep={setCurrentStep}
-          handleSetUserColor={handleSetUserColor}
-        />
-      )}
+        {currentStep === WelcomeSteps.Step4 && (
+          <WelcomeStep4
+            userColor={userColor}
+            setCurrentStep={setCurrentStep}
+            handleSetUserColor={handleSetUserColor}
+          />
+        )}
+      </Stack>
     </BaseModal>
   );
 }

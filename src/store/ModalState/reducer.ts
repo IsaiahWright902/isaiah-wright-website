@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type ModalState = {
   welcomeModal: boolean;
+  userColorPickerModal: boolean;
   [key: string]: boolean;
 };
 
 const initialState: ModalState = {
   welcomeModal: false,
+  userColorPickerModal: false,
 };
 
 export const ModalSlice = createSlice({

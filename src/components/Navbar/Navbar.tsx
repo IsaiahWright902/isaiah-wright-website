@@ -41,12 +41,13 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
     setAnchorElNav(null);
   };
 
-  const toggleThemePreference = (val: boolean) => {
-    dispatch(coreActions.setUseLightMode(val));
+  const handleColorClick = () => {
+    dispatch(modalActions.open("userColorPickerModal"));
+    // dispatch(modalActions.open("welcomeModal"));
   };
 
-  const removeThis = () => {
-    dispatch(modalActions.open("welcomeModal"));
+  const toggleThemePreference = (val: boolean) => {
+    dispatch(coreActions.setUseLightMode(val));
   };
 
   return (
@@ -120,7 +121,7 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
                   open={Boolean(anchorElNav)}
                   onClose={handleCloseNavMenu}
                 >
-                  <MenuItem>
+                  <MenuItem onClick={handleColorClick}>
                     <Stack spacing={1} direction="row" alignItems="center">
                       <Typography variant="subtitle1">Change Color</Typography>
                       <Box
@@ -182,7 +183,7 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
                   useLightMode={useLightMode}
                 />
                 <ChangeUserColor
-                  handleOpenModal={removeThis}
+                  handleOpenModal={handleColorClick}
                   userColor={userColor}
                 />
               </Stack>
@@ -238,6 +239,7 @@ function ChangeUserColor({
         borderRadius="50%"
         sx={{
           background: userColor,
+          cursor: "pointer",
         }}
       ></Box>
     </Tooltip>

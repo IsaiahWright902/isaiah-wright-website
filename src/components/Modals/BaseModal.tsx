@@ -1,11 +1,9 @@
 "use client";
-
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   IconButton,
-  Slide,
   Stack,
   Typography,
   Zoom,
@@ -57,11 +55,7 @@ export default function BaseModal({
           </IconButton>
         </Stack>
       </DialogTitle>
-      <DialogContent>
-        <Stack pt={2} pb={2} spacing={2} minHeight="200px">
-          {children}
-        </Stack>
-      </DialogContent>
+      <DialogContent sx={{ minHeight: "200px" }}>{children}</DialogContent>
     </Dialog>
   );
 }

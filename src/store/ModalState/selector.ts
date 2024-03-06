@@ -8,6 +8,12 @@ const welcomeModal = createSelector(
   (modals) => modals.welcomeModal
 );
 
+const userColorPickerModal = createSelector(
+  modalSelector,
+  (modals) => modals.userColorPickerModal
+);
+
 export const modalSelectors = {
   welcomeModal,
+  userColorPickerModal,
 };
