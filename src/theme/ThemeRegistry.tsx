@@ -115,7 +115,10 @@ const themeOptions: ThemeOptions = {
 };
 
 export const lightTheme = createTheme({
-  palette: pallette,
+  palette: {
+    mode: "light",
+    ...pallette,
+  },
   typography: {
     ...typography,
     allVariants: {
@@ -169,7 +172,10 @@ export const lightTheme = createTheme({
 });
 
 export const darkTheme = createTheme({
-  palette: pallette,
+  palette: {
+    mode: "dark",
+    ...pallette,
+  },
   typography: {
     ...typography,
     allVariants: {
@@ -238,6 +244,13 @@ export const darkTheme = createTheme({
       styleOverrides: {
         paper: {
           background: "#181818",
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          color: "white",
         },
       },
     },

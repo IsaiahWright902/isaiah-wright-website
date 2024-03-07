@@ -232,16 +232,17 @@ function ChangeUserColor({
 }) {
   return (
     <Tooltip title="Change Preferred Color">
-      <Box
-        onClick={handleOpenModal}
-        width="20px"
-        height="20px"
-        borderRadius="50%"
-        sx={{
-          background: userColor,
-          cursor: "pointer",
-        }}
-      ></Box>
+      <IconButton onClick={handleOpenModal}>
+        <Box
+          width="20px"
+          height="20px"
+          borderRadius="50%"
+          sx={{
+            background: userColor,
+            cursor: "pointer",
+          }}
+        ></Box>
+      </IconButton>
     </Tooltip>
   );
 }
