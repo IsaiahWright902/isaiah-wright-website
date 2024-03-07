@@ -21,6 +21,40 @@ export function hexToRgbA(hex: string, opacity: number): string {
   throw new Error("Bad Hex");
 }
 
+type RGBColor = {
+  r: number;
+  g: number;
+  b: number;
+};
+
+export function hexToRgb(hex: string): RGBColor | null {
+  const hexWithoutHash = hex.replace(/^#/, "");
+
+  const bigint = parseInt(hexWithoutHash, 16);
+
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+
+  return { r, g, b };
+}
+
+export function getComplementColor(hexColor: string): string | null {
+  const rgbColor = hexToRgb(hexColor);
+
+  if (rgbColor) {
+    const complementColor = `#${(
+      0xffffff ^
+      ((rgbColor.r << 16) | (rgbColor.g << 8) | rgbColor.b)
+    )
+      .toString(16)
+      .padStart(6, "0")}`;
+    return complementColor;
+  }
+
+  return null;
+}
+
 /* 
    this function tests the luminance of a color and returns
    a white or black text color so the text is visible on UI elements

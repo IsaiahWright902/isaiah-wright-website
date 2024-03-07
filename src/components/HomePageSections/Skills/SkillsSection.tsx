@@ -1,11 +1,19 @@
 "use client";
-import { Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Popover,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useSelector } from "react-redux";
 import { skillSelectors } from "@/store/SkillState/selector";
 import UserChip from "@/components/UserChip/UserChip";
 import SkillSearchFilters from "./SkillSearchFilters";
 import { useEffect, useState } from "react";
 import { Skill } from "@/store/SkillState/reducer";
+import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
 export default function SkillsSection() {
   const filteredSkills = useFilteredSkillList();
@@ -25,6 +33,7 @@ export default function SkillsSection() {
           </Typography>
         </Grid>
         <SkillSearchFilters />
+
         <Grid item xs={12}>
           <Stack
             direction="row"

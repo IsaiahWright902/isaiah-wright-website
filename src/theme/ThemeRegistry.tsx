@@ -240,13 +240,13 @@ export const darkTheme = createTheme({
         },
       },
     },
-    MuiMenu: {
-      styleOverrides: {
-        paper: {
-          background: "#181818",
-        },
-      },
-    },
+    // MuiMenu: {
+    //   styleOverrides: {
+    //     paper: {
+    //       background: "#181818",
+    //     },
+    //   },
+    // },
     MuiTextField: {
       styleOverrides: {
         root: {
