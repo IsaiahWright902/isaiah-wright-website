@@ -2,7 +2,7 @@
 
 import { coreSelectors } from "@/store/CoreState/selector";
 import { Skill } from "@/store/SkillState/reducer";
-import { hexToRgbA } from "@/utils/general-utils";
+import { getTextColorBasedOnUserColor, hexToRgbA } from "@/utils/general-utils";
 import { Box, Chip, Paper, Tooltip, Typography, Zoom } from "@mui/material";
 import { useSelector } from "react-redux";
 
@@ -30,7 +30,7 @@ export default function UserChip({ skill }: { skill: Skill }) {
           background: userColor,
           fontSize: "16px",
           cursor: "pointer",
-          color: getTextColor(userColor),
+          color: getTextColorBasedOnUserColor(userColor),
           "&:hover": {
             boxShadow: `0 4px 8px ${
               useLightMode ? "rgba(0, 0, 0, 0.4)" : hexToRgbA("#f0f2f5", 0.4)
