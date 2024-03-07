@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export type Skill = {
   name: string;
@@ -12,11 +12,19 @@ enum SkillProficiency {
   Advanced = 2,
 }
 
+export type SkillFilter = {
+  search: string;
+};
+
 export type SkillState = {
+  skillFilter: SkillFilter;
   skills: Skill[];
 };
 
 const initialState: SkillState = {
+  skillFilter: {
+    search: "",
+  },
   skills: [
     {
       name: "AWS Services",
@@ -139,7 +147,11 @@ const initialState: SkillState = {
 export const SkillSlice = createSlice({
   name: "skills",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setSkillFilters: (state, action: PayloadAction<SkillFilter>) => {
+      state.skillFilter = action.payload;
+    },
+  },
 });
 
 export const skillActions = {
