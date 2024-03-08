@@ -1,3 +1,5 @@
+import Color from "color";
+
 export function hexToRgbA(hex: string, opacity: number): string {
   let c: number;
 
@@ -53,6 +55,13 @@ export function getComplementColor(hexColor: string): string | null {
   }
 
   return null;
+}
+
+export function getAnalogousColor(hexColor: string): string {
+  const baseColor = Color(hexColor);
+  const analogousColor = baseColor.rotate(30).lighten(0.4); // Rotate the hue by 30 degrees (adjust as needed)
+
+  return analogousColor.hex();
 }
 
 /* 

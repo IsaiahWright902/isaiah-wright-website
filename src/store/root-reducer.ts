@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
-import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import storage from "redux-persist/es/storage";
 import coreSliceReducer from "@/store/CoreState/reducer";
 import skillSliceReducer from "@/store/SkillState/reducer";

@@ -6,10 +6,23 @@ export type Skill = {
   proficiency: SkillProficiency;
 };
 
-enum SkillProficiency {
+export enum SkillProficiency {
   Beginner = 0,
   Intermediate = 1,
   Advanced = 2,
+}
+
+export function GetSkillProficiencyDisplay(skillProficiency: SkillProficiency) {
+  switch (skillProficiency) {
+    case SkillProficiency.Beginner:
+      return "Beginner";
+    case SkillProficiency.Intermediate:
+      return "Intermediate";
+    case SkillProficiency.Advanced:
+      return "Advanced";
+    default:
+      return "Error";
+  }
 }
 
 export type SkillFilter = {
@@ -138,6 +151,11 @@ const initialState: SkillState = {
     },
     {
       name: "Bootstrap",
+      yearsOfExperience: 3,
+      proficiency: SkillProficiency.Advanced,
+    },
+    {
+      name: "TEST",
       yearsOfExperience: 3,
       proficiency: SkillProficiency.Advanced,
     },

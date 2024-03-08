@@ -29,9 +29,6 @@ export default function AboutSection() {
           md: "column-reverse",
           lg: "row",
         }}
-        sx={{
-          transition: "all 0.5s",
-        }}
       >
         <Grid item xs={12} sm={6}>
           <Stack spacing={2}>

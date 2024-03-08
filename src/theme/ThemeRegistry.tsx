@@ -122,7 +122,6 @@ export const lightTheme = createTheme({
   typography: {
     ...typography,
     allVariants: {
-      color: "black !important",
       fontWeight: 300,
     },
   },
@@ -180,7 +179,6 @@ export const darkTheme = createTheme({
     ...typography,
     allVariants: {
       fontWeight: 300,
-      color: "white !important",
     },
   },
   components: {
