@@ -25,19 +25,11 @@ export function GetSkillProficiencyDisplay(skillProficiency: SkillProficiency) {
   }
 }
 
-export type SkillFilter = {
-  search: string;
-};
-
 export type SkillState = {
-  skillFilter: SkillFilter;
   skills: Skill[];
 };
 
 const initialState: SkillState = {
-  skillFilter: {
-    search: "",
-  },
   skills: [
     {
       name: "AWS Services",
@@ -155,7 +147,7 @@ const initialState: SkillState = {
       proficiency: SkillProficiency.Advanced,
     },
     {
-      name: "TEST",
+      name: "TESTTTTTTT",
       yearsOfExperience: 3,
       proficiency: SkillProficiency.Advanced,
     },
@@ -165,11 +157,7 @@ const initialState: SkillState = {
 export const SkillSlice = createSlice({
   name: "skills",
   initialState: initialState,
-  reducers: {
-    setSkillFilters: (state, action: PayloadAction<SkillFilter>) => {
-      state.skillFilter = action.payload;
-    },
-  },
+  reducers: {},
 });
 
 export const skillActions = {

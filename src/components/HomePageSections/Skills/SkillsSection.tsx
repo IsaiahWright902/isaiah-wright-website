@@ -14,6 +14,7 @@ import SkillSearchFilters from "./SkillSearchFilters";
 import { useEffect, useState } from "react";
 import { Skill } from "@/store/SkillState/reducer";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { searchSelectors } from "@/store/SearchSlice/selector";
 
 export default function SkillsSection() {
   const filteredSkills = useFilteredSkillList();
@@ -54,7 +55,7 @@ export default function SkillsSection() {
 }
 
 function useFilteredSkillList() {
-  const skillFilters = useSelector(skillSelectors.skillFilters);
+  const skillFilters = useSelector(searchSelectors.skillSearchFilters);
   const allSkills = useSelector(skillSelectors.allSkills);
 
   const [filteredSkills, setFilteredSkills] = useState<Skill[]>([]);

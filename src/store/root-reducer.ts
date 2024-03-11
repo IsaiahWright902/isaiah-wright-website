@@ -4,16 +4,20 @@ import storage from "redux-persist/es/storage";
 import coreSliceReducer from "@/store/CoreState/reducer";
 import skillSliceReducer from "@/store/SkillState/reducer";
 import modalSliceReducer from "@/store/ModalState/reducer";
+import searchSliceReducer from "@/store/SearchSlice/reducer";
+import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: storage,
+  blacklist: ["skills"],
 };
 
 const staticReducers = combineReducers({
   core: coreSliceReducer,
-  skills: skillSliceReducer,
+  search: searchSliceReducer,
   modals: modalSliceReducer,
+  skills: skillSliceReducer,
 });
 
 // @ts-expect-error state type not defined yet

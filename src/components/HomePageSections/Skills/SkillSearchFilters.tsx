@@ -10,19 +10,21 @@ import {
 import ClearIcon from "@mui/icons-material/Clear";
 import { useDispatch, useSelector } from "react-redux";
 import { skillSelectors } from "@/store/SkillState/selector";
-import { SkillFilter, skillActions } from "@/store/SkillState/reducer";
+import { skillActions } from "@/store/SkillState/reducer";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { SkillFilter, searchActions } from "@/store/SearchSlice/reducer";
+import { searchSelectors } from "@/store/SearchSlice/selector";
 
 enum SkillSearchCollection {
   Search = 1,
 }
 
 export default function SkillSearchFilters() {
-  const skillFilters = useSelector(skillSelectors.skillFilters);
+  const skillFilters = useSelector(searchSelectors.skillSearchFilters);
   const dispatch = useDispatch();
 
   const handleFilterUpdate = (updatedFilters: SkillFilter) => {
-    dispatch(skillActions.setSkillFilters(updatedFilters));
+    dispatch(searchActions.setSkillFilters(updatedFilters));
   };
 
   const [tempSearch, setTempSearch] = useState(skillFilters.search);

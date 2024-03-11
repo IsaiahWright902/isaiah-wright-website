@@ -59,7 +59,7 @@ export function getComplementColor(hexColor: string): string | null {
 
 export function getAnalogousColor(hexColor: string): string {
   const baseColor = Color(hexColor);
-  const analogousColor = baseColor.rotate(30).lighten(0.4); // Rotate the hue by 30 degrees (adjust as needed)
+  const analogousColor = baseColor.rotate(30).lighten(0.4);
 
   return analogousColor.hex();
 }
