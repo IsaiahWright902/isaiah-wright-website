@@ -5,7 +5,6 @@ import coreSliceReducer from "@/store/CoreState/reducer";
 import skillSliceReducer from "@/store/SkillState/reducer";
 import modalSliceReducer from "@/store/ModalState/reducer";
 import searchSliceReducer from "@/store/SearchSlice/reducer";
-import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 
 const persistConfig = {
   key: "root",

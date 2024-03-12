@@ -1,20 +1,13 @@
 "use client";
-import {
-  Box,
-  Container,
-  Grid,
-  Popover,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { skillSelectors } from "@/store/SkillState/selector";
 import UserChip from "@/components/UserChip/UserChip";
 import SkillSearchFilters from "./SkillSearchFilters";
 import { useEffect, useState } from "react";
 import { Skill } from "@/store/SkillState/reducer";
-import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { searchSelectors } from "@/store/SearchSlice/selector";
+import { IsYOEInSearchRange } from "@/store/SearchSlice/reducer";
 
 export default function SkillsSection() {
   const filteredSkills = useFilteredSkillList();
@@ -31,6 +24,12 @@ export default function SkillsSection() {
         <Grid item xs={12}>
           <Typography variant="h1" textAlign={{ xs: "center", md: "left" }}>
             Skills
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            textAlign={{ xs: "center", md: "left" }}
+          >
+            (Hire me & help boost these metrics!)
           </Typography>
         </Grid>
         <SkillSearchFilters />
@@ -69,7 +68,22 @@ function useFilteredSkillList() {
             .toLocaleLowerCase()
             .includes(normalizedSearch);
 
-          return matchesSearch;
+          const categoryMatches =
+            skillFilters.category === null ||
+            x.category === skillFilters.category;
+
+          const proficiencyMatches =
+            skillFilters.proficiency === null ||
+            x.proficiency === skillFilters.proficiency;
+
+          const yearsOfExperiencePasses =
+            skillFilters.yearsOfExperience === null ||
+            IsYOEInSearchRange(
+              skillFilters.yearsOfExperience,
+              x.yearsOfExperience
+            );
+
+          return matchesSearch && categoryMatches && proficiencyMatches;
         })
         .sort((a, b) => a.name.localeCompare(b.name))
     );

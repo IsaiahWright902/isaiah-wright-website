@@ -1,7 +1,27 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { SkillCategory, SkillProficiency } from "../SkillState/reducer";
+
+export enum YearsOfExperience {
+  OneToTwo = 1,
+  TwoToThree = 2,
+  ThreeOrMore = 3,
+}
+
+export function IsYOEInSearchRange(filter: YearsOfExperience, val: number) {
+  switch (filter) {
+    case YearsOfExperience.OneToTwo:
+      return val >= 1 && val <= 2;
+
+    default:
+      return false;
+  }
+}
 
 export type SkillFilter = {
   search: string;
+  category: SkillCategory | null;
+  proficiency: SkillProficiency | null;
+  yearsOfExperience: YearsOfExperience | null;
 };
 
 export type SearchState = {
@@ -11,6 +31,9 @@ export type SearchState = {
 const initialState: SearchState = {
   skillFilter: {
     search: "",
+    category: null,
+    proficiency: null,
+    yearsOfExperience: null,
   },
 };
 

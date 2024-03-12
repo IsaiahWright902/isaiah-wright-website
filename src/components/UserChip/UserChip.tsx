@@ -22,7 +22,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import React from "react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { PieChart, Pie, ResponsiveContainer } from "recharts";
 
@@ -33,10 +32,12 @@ export default function UserChip({ skill }: { skill: Skill }) {
 
   const getProficiencyPercent = (val: SkillProficiency) => {
     switch (val) {
+      case SkillProficiency.SomeKnowledge:
+        return 25;
       case SkillProficiency.Beginner:
-        return 33.33;
+        return 50;
       case SkillProficiency.Intermediate:
-        return 66.66;
+        return 75;
       case SkillProficiency.Advanced:
         return 100;
       default:
@@ -64,17 +65,6 @@ export default function UserChip({ skill }: { skill: Skill }) {
       value: calculateExperiencePercentage(skill.yearsOfExperience),
     },
   ];
-
-  const [open, setOpen] = useState(false);
-
-  const handleTooltipClick = () => {
-    setOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    if (isMobile) return;
-    else setOpen(false);
-  };
 
   const analogousColor = getAnalogousColor(userColor);
 
@@ -143,7 +133,9 @@ export default function UserChip({ skill }: { skill: Skill }) {
                     Years of Experience:
                   </Typography>
                   <Typography variant="subtitle1" color="white ">
-                    {skill.yearsOfExperience}{" "}
+                    {skill.yearsOfExperience >= 10
+                      ? skill.yearsOfExperience + "+"
+                      : skill.yearsOfExperience}{" "}
                     {skill.yearsOfExperience > 1 ? "Years" : "Year"}
                   </Typography>
                 </Stack>
