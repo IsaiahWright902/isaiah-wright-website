@@ -13,6 +13,7 @@ import HeadShot from "@public/headshotNew.jpeg";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { theme } from "@/theme/ThemeRegistry";
 import { useSelector } from "react-redux";
+import AboutStyles from "./AboutStyles.module.css";
 
 export default function AboutSection() {
   const userColor = useSelector(coreSelectors.userColor);
@@ -67,12 +68,14 @@ export default function AboutSection() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              alignItems: "center",
               padding: "25px",
             }}
           >
             <Box
               width={"100%"}
               height={"100%"}
+              className={AboutStyles.heroImage}
               borderRadius="50%"
               sx={{
                 border: `2px solid ${userColor}`,
@@ -84,11 +87,13 @@ export default function AboutSection() {
                   height: "100%",
                   flexDirection: "row",
                   justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Image
                   src={HeadShot}
                   alt="Headshot"
+                  className={AboutStyles.heroImage}
                   width={0}
                   height={0}
                   style={{

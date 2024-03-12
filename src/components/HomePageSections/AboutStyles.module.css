@@ -1,0 +1,17 @@
+.heroImage {
+  width: 100%;
+}
+
+/* Media query for small screens (sm) */
+@media only screen and (min-width: 600px) and (max-width: 899px) {
+  .heroImage {
+    max-width: 350px;
+  }
+}
+
+/* Media query for medium screens (md) */
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  .heroImage {
+    max-width: 350px;
+  }
+}
