@@ -13,13 +13,7 @@ export default function SkillsSection() {
   const filteredSkills = useFilteredSkillList();
 
   return (
-    <Container
-      disableGutters
-      //   REMOVE ME
-      sx={{
-        minHeight: "50vh",
-      }}
-    >
+    <Container disableGutters>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h1" textAlign={{ xs: "center", md: "left" }}>
