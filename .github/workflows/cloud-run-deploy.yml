@@ -1,4 +1,4 @@
-name: Deploy to Cloud Run
+name: CI/CI Pipeline
 
 env:
   SERVICE_NAME: next-app-project
