@@ -83,7 +83,12 @@ function useFilteredSkillList() {
               x.yearsOfExperience
             );
 
-          return matchesSearch && categoryMatches && proficiencyMatches;
+          return (
+            matchesSearch &&
+            categoryMatches &&
+            proficiencyMatches &&
+            yearsOfExperiencePasses
+          );
         })
         .sort((a, b) => a.name.localeCompare(b.name))
     );

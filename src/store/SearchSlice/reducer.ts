@@ -11,7 +11,10 @@ export function IsYOEInSearchRange(filter: YearsOfExperience, val: number) {
   switch (filter) {
     case YearsOfExperience.OneToTwo:
       return val >= 1 && val <= 2;
-
+    case YearsOfExperience.TwoToThree:
+      return val >= 2 && val <= 3;
+    case YearsOfExperience.ThreeOrMore:
+      return val > 3;
     default:
       return false;
   }

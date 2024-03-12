@@ -30,6 +30,7 @@ enum SkillSearchCollection {
   Search = 1,
   Category = 2,
   Proficiency = 3,
+  YearsOfExperience = 4,
 }
 
 export default function SkillSearchFilters() {
@@ -85,6 +86,11 @@ export default function SkillSearchFilters() {
           proficiency: null,
         });
         break;
+      case SkillSearchCollection.YearsOfExperience:
+        handleFilterUpdate({
+          ...skillFilters,
+          yearsOfExperience: null,
+        });
       default:
         return;
     }
@@ -111,7 +117,7 @@ export default function SkillSearchFilters() {
   const handleYearsOfExperienceChange = (val: string) => {
     const updatedFilter: SkillFilter = {
       ...skillFilters,
-      proficiency: parseInt(val),
+      yearsOfExperience: parseInt(val),
     };
 
     handleFilterUpdate(updatedFilter);
@@ -251,7 +257,9 @@ export default function SkillSearchFilters() {
                   }}
                   aria-label="clear"
                   onClick={() =>
-                    handleClearCollection(SkillSearchCollection.Category)
+                    handleClearCollection(
+                      SkillSearchCollection.YearsOfExperience
+                    )
                   }
                 >
                   <ClearIcon fontSize="small" />
