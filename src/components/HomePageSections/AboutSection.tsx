@@ -37,7 +37,7 @@ export default function AboutSection() {
               Hi, my name is
             </Typography>
             <Typography variant="h1" textAlign={{ xs: "center", md: "left" }}>
-              Isaiah Wright,
+              Isaiah Test,
             </Typography>
             <Typography variant="h3" textAlign={{ xs: "center", md: "left" }}>
               I build full stack applications {isMobile ? null : ":)"}
