@@ -43,9 +43,16 @@ export default function SkillsSection() {
             pt={2}
             gap="20px"
           >
-            {filteredSkills.map((skill, idx) => (
-              <UserChip key={idx} skill={skill} />
-            ))}
+            {filteredSkills.length >= 1 ? (
+              filteredSkills.map((skill, idx) => (
+                <UserChip key={idx} skill={skill} />
+              ))
+            ) : (
+              <Stack direction="row" justifyContent="center">
+                {" "}
+                <Typography textAlign="center">No Results Found :(</Typography>
+              </Stack>
+            )}
           </Stack>
         </Grid>
       </Grid>
