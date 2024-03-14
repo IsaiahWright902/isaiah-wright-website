@@ -3,9 +3,15 @@
 import { coreSelectors } from "@/store/CoreState/selector";
 import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
+import Image from "next/image";
+
+import ExperienceStyles from "./ExperienceStyles.module.css";
+import MLLogoWhite from "@public/madelabs-logo-white.png";
+import MLLogoDark from "@public/madelabs-logo-dark.png";
 
 export default function ExperienceSection() {
   const userColor = useSelector(coreSelectors.userColor);
+  const useLightMode = useSelector(coreSelectors.useLightMode);
 
   const madeLabsBullets = [
     "Contributed to both front-end and back-end development tasks.",
@@ -57,10 +63,33 @@ export default function ExperienceSection() {
               </Grid>
               <Grid item xs={12} sm={8}>
                 <Stack spacing={2} alignItems="center" justifyContent="center">
-                  <img
-                    src="https://www.madelabs.io/_next/image?url=%2Flogo.png&w=256&q=75"
-                    style={{ width: "400px" }}
-                  />
+                  {useLightMode ? (
+                    <Image
+                      src={MLLogoWhite}
+                      alt="Headshot"
+                      className={ExperienceStyles.experienceImage}
+                      width={0}
+                      height={0}
+                      style={
+                        {
+                          // width: "400px",
+                          // height: "auto",
+                        }
+                      }
+                    />
+                  ) : (
+                    <Image
+                      src={MLLogoDark}
+                      alt="Headshot"
+                      className={ExperienceStyles.experienceImage}
+                      width={0}
+                      height={0}
+                      style={{
+                        // width: "400px",
+                        height: "auto",
+                      }}
+                    />
+                  )}
                 </Stack>
               </Grid>
               <Grid item xs={12}>
