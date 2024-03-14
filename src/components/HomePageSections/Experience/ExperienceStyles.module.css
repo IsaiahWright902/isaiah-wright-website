@@ -4,10 +4,17 @@
   max-width: 400px;
 }
 
+.alignTextCenter {
+  /*  */
+}
+
 /* Media query for small screens (sm) */
 @media only screen and (min-width: 600px) and (max-width: 899px) {
   .experienceImage {
     max-width: 350px;
+  }
+  .alignTextCenter {
+    text-align: center;
   }
 }
 
