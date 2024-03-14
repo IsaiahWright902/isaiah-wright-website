@@ -1,4 +1,4 @@
-name: CI/CI Pipeline
+name: CI/CD Pipeline
 
 env:
   SERVICE_NAME: next-app-project
