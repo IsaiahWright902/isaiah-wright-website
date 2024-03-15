@@ -1,5 +1,5 @@
 "use client";
-import { Container, Grid, Stack, Typography } from "@mui/material";
+import { Grid, Stack, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { skillSelectors } from "@/store/SkillState/selector";
 import UserChip from "@/components/UserChip/UserChip";
@@ -8,31 +8,18 @@ import { useEffect, useState } from "react";
 import { Skill } from "@/store/SkillState/reducer";
 import { searchSelectors } from "@/store/SearchSlice/selector";
 import { IsYOEInSearchRange } from "@/store/SearchSlice/reducer";
+import SectionContainer from "@/components/SectionContainer/SectionContainer";
 
 export default function SkillsSection() {
   const filteredSkills = useFilteredSkillList();
 
   return (
-    <Container
-      disableGutters
-      sx={{
-        minHeight: "50vh",
-      }}
+    <SectionContainer
+      title="Skills"
+      subtitle="Hire me & help boost these metrics!"
     >
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Typography variant="h1" textAlign={{ xs: "center", md: "left" }}>
-            Skills
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            textAlign={{ xs: "center", md: "left" }}
-          >
-            (Hire me & help boost these metrics!)
-          </Typography>
-        </Grid>
         <SkillSearchFilters />
-
         <Grid item xs={12}>
           <Stack
             direction="row"
@@ -55,7 +42,7 @@ export default function SkillsSection() {
           </Stack>
         </Grid>
       </Grid>
-    </Container>
+    </SectionContainer>
   );
 }
 

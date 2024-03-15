@@ -8,6 +8,7 @@ import MLLogoDark from "@public/madelabs-logo-dark.png";
 import UWRGLogo from "@public/UWRG-Logo-sm.png";
 import BCWLogo from "@public/codeworks.png";
 import ExperienceItem, { ExperienceItemDTO } from "./ExperienceItem";
+import SectionContainer from "@/components/SectionContainer/SectionContainer";
 
 export default function ExperienceSection() {
   const userColor = useSelector(coreSelectors.userColor);
@@ -68,31 +69,15 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <Container
-      disableGutters
-      //   REMOVE ME
-      sx={{
-        minHeight: "50vh",
-      }}
+    <SectionContainer
+      title="Experience"
+      subtitle="Act now & you could be here at the top!"
     >
-      <Grid container spacing={2} pb={2}>
-        <Grid item xs={12}>
-          <Typography variant="h1" textAlign={{ xs: "center", md: "left" }}>
-            Experience
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            textAlign={{ xs: "center", md: "left" }}
-          >
-            (Act now & you could be here at the top!)
-          </Typography>
-        </Grid>
-      </Grid>
       <Grid container spacing={4}>
         {experienceItems.map((item, idx) => (
           <ExperienceItem key={idx} experienceItem={item} />
         ))}
       </Grid>
-    </Container>
+    </SectionContainer>
   );
 }

@@ -6,17 +6,10 @@ import {
   InputAdornment,
   IconButton,
   MenuItem,
-  SelectChangeEvent,
 } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { SkillFilter, searchActions } from "@/store/SearchSlice/reducer";
 import { searchSelectors } from "@/store/SearchSlice/selector";
 import {
