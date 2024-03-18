@@ -4,12 +4,9 @@ env:
   SERVICE_NAME: next-app-project
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
-      - master
+      - "master"
     types:
       - closed
 
