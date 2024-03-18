@@ -2,11 +2,11 @@
 
 import { coreSelectors } from "@/store/CoreState/selector";
 import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
-import { useSelector } from "react-redux";
 import CircleIcon from "@mui/icons-material/Circle";
+import { useAppSelector } from "@/store/store";
 
 export function ExperienceBulletPoint({ text }: { text: string }) {
-  const userColor = useSelector(coreSelectors.userColor);
+  const userColor = useAppSelector(coreSelectors.userColor);
   return (
     <ListItem alignItems="flex-start">
       <ListItemIcon sx={{ minWidth: "35px" }}>

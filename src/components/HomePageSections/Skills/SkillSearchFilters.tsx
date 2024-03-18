@@ -8,7 +8,6 @@ import {
   MenuItem,
 } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useDispatch, useSelector } from "react-redux";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { SkillFilter, searchActions } from "@/store/SearchSlice/reducer";
 import { searchSelectors } from "@/store/SearchSlice/selector";
@@ -18,6 +17,7 @@ import {
   SkillProficiency,
 } from "@/store/SkillState/reducer";
 import { YearsOfExperience } from "@/store/SearchSlice/reducer";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 enum SkillSearchCollection {
   Search = 1,
@@ -27,8 +27,8 @@ enum SkillSearchCollection {
 }
 
 export default function SkillSearchFilters() {
-  const skillFilters = useSelector(searchSelectors.skillSearchFilters);
-  const dispatch = useDispatch();
+  const skillFilters = useAppSelector(searchSelectors.skillSearchFilters);
+  const dispatch = useAppDispatch();
 
   const handleFilterUpdate = (updatedFilters: SkillFilter) => {
     dispatch(searchActions.setSkillFilters(updatedFilters));

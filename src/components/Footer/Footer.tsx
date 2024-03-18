@@ -10,10 +10,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useState } from "react";
 import UserColorDivider from "../UserColorDivider/UserColorDivider";
+import { useAppSelector } from "@/store/store";
 
 export default function Footer({ links }: { links: PortfolioLink[] }) {
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function Footer({ links }: { links: PortfolioLink[] }) {
     window.open(path, "_blank");
   };
 
-  const useLightMode = useSelector(coreSelectors.useLightMode);
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <Box

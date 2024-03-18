@@ -10,8 +10,7 @@ import {
 } from "@mui/material/styles";
 import { pallette } from "./palette";
 import ModalRegistry from "@/components/Modals/ModalRegistry";
-import { Poppins, Inter } from "next/font/google";
-import { useSelector } from "react-redux";
+import { Poppins } from "next/font/google";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 import Navbar from "@/components/Navbar/Navbar";
@@ -20,6 +19,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { useMemo } from "react";
+import { useAppSelector } from "@/store/store";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -133,8 +133,8 @@ export default function ThemeRegistry({
   children: React.ReactNode;
 }) {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const useLightMode = useSelector(coreSelectors.useLightMode);
-  const userColor = useSelector(coreSelectors.userColor);
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
+  const userColor = useAppSelector(coreSelectors.userColor);
 
   const lightTheme = useMemo(
     () =>

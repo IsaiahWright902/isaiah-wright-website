@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import BaseModal from "../BaseModal";
-import { useDispatch, useSelector } from "react-redux";
 import { modalSelectors } from "@/store/ModalState/selector";
 import { modalActions } from "@/store/ModalState/reducer";
 import { coreSelectors } from "@/store/CoreState/selector";
@@ -11,6 +10,7 @@ import WelcomeStep2 from "./components/WelcomeStep2";
 import WelcomeStep3 from "./components/WelcomeStep3";
 import WelcomeStep4 from "./components/WelcomeStep4";
 import { Stack } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 export enum WelcomeSteps {
   Step1 = 1,
@@ -20,10 +20,10 @@ export enum WelcomeSteps {
 }
 
 export default function WelcomeModal() {
-  const dispatch = useDispatch();
-  const isOpen = useSelector(modalSelectors.welcomeModal);
-  const useLightMode = useSelector(coreSelectors.useLightMode);
-  const userColor = useSelector(coreSelectors.userColor);
+  const dispatch = useAppDispatch();
+  const isOpen = useAppSelector(modalSelectors.welcomeModal);
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
+  const userColor = useAppSelector(coreSelectors.userColor);
 
   const [currentStep, setCurrentStep] = useState<WelcomeSteps>(
     WelcomeSteps.Step1

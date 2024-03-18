@@ -1,22 +1,16 @@
 import { withHandler } from "@/utils/api-utils";
+import { SendEmailDTO } from "@/validators/emailValidators";
 import { NextRequest, NextResponse } from "next/server";
 
-type EmailContent = {
-  subject: string;
-  text: string;
-};
-
-export const POST = await withHandler<EmailContent>(
+export const POST = await withHandler<SendEmailDTO>(
   async (request, requestBody) => {
-    console.log(requestBody);
-
     const sgMail = require("@sendgrid/mail");
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
       to: "icwright902@gmail.com", // Change to your recipient
       from: "icwright902@gmail.com", // Change to your verified sender
       subject: requestBody.subject,
-      text: requestBody.text,
+      text: requestBody.message,
     };
 
     sgMail

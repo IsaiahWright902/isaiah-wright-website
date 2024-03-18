@@ -6,29 +6,20 @@ import {
   Skill,
   SkillProficiency,
 } from "@/store/SkillState/reducer";
+import { useAppSelector } from "@/store/store";
 import { theme } from "@/theme/ThemeRegistry";
 import {
   getAnalogousColor,
   getTextColorBasedOnUserColor,
   hexToRgbA,
 } from "@/utils/general-utils";
-import {
-  Box,
-  Chip,
-  Stack,
-  Tooltip,
-  Typography,
-  Zoom,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Chip, Stack, Tooltip, Typography, Zoom } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
 import { PieChart, Pie, ResponsiveContainer } from "recharts";
 
 export default function UserChip({ skill }: { skill: Skill }) {
-  const userColor = useSelector(coreSelectors.userColor);
-  const useLightMode = useSelector(coreSelectors.useLightMode);
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const userColor = useAppSelector(coreSelectors.userColor);
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
 
   const getProficiencyPercent = (val: SkillProficiency) => {
     switch (val) {
