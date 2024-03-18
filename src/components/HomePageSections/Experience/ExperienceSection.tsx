@@ -1,6 +1,4 @@
 "use client";
-
-import { coreSelectors } from "@/store/CoreState/selector";
 import { Grid } from "@mui/material";
 import MLLogoWhite from "@public/madelabs-logo-white.png";
 import MLLogoDark from "@public/madelabs-logo-dark.png";
@@ -8,12 +6,8 @@ import UWRGLogo from "@public/UWRG-Logo-sm.png";
 import BCWLogo from "@public/codeworks.png";
 import ExperienceItem, { ExperienceItemDTO } from "./ExperienceItem";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import { useAppSelector } from "@/store/store";
 
 export default function ExperienceSection() {
-  const userColor = useAppSelector(coreSelectors.userColor);
-  const useLightMode = useAppSelector(coreSelectors.useLightMode);
-
   const experienceItems: ExperienceItemDTO[] = [
     {
       companyName: "MadeLabs",
