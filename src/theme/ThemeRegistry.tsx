@@ -25,6 +25,7 @@ import Footer from "@/components/Footer/Footer";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import { useMemo } from "react";
 
 const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -114,148 +115,6 @@ const themeOptions: ThemeOptions = {
   breakpoints: breakpoints,
 };
 
-export const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-    ...pallette,
-  },
-  typography: {
-    ...typography,
-    allVariants: {
-      fontWeight: 300,
-    },
-  },
-  components: {
-    ...components,
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          color: "white",
-          textTransform: "unset",
-          boxShadow: "none",
-        },
-        contained: {
-          color: "white",
-        },
-        outlined: {
-          color: "black",
-        },
-        text: {
-          color: "black",
-        },
-      },
-    },
-    MuiDialogTitle: {
-      styleOverrides: {
-        root: {
-          background: "#f0f2f5",
-        },
-      },
-    },
-    MuiDialogContent: {
-      styleOverrides: {
-        root: {
-          background: "white",
-        },
-      },
-    },
-    MuiDialog: {
-      styleOverrides: {
-        paper: {
-          background: "none",
-        },
-      },
-    },
-  },
-  breakpoints: breakpoints,
-});
-
-export const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    ...pallette,
-  },
-  typography: {
-    ...typography,
-    allVariants: {
-      fontWeight: 300,
-    },
-  },
-  components: {
-    ...components,
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          color: "white",
-          textTransform: "unset",
-          boxShadow: "none",
-        },
-        contained: {
-          color: "white",
-        },
-        outlined: {
-          color: "white",
-        },
-        text: {
-          color: "white",
-        },
-      },
-    },
-    MuiDialogTitle: {
-      styleOverrides: {
-        root: {
-          background: "#181818",
-        },
-      },
-    },
-    MuiDialogContent: {
-      styleOverrides: {
-        root: {
-          background: "#121212",
-          color: "white",
-        },
-      },
-    },
-    MuiDialog: {
-      styleOverrides: {
-        paper: {
-          background: "none",
-        },
-      },
-    },
-    MuiIcon: {
-      styleOverrides: {
-        root: {
-          color: "white",
-          fill: "white",
-        },
-      },
-    },
-    MuiDivider: {
-      styleOverrides: {
-        root: {
-          background: "#f0f2f5",
-        },
-      },
-    },
-    // MuiMenu: {
-    //   styleOverrides: {
-    //     paper: {
-    //       background: "#181818",
-    //     },
-    //   },
-    // },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          color: "white",
-        },
-      },
-    },
-  },
-  breakpoints: breakpoints,
-});
-
 export const theme = createTheme(themeOptions);
 
 export type PortfolioLink = {
@@ -289,6 +148,103 @@ export default function ThemeRegistry({
 }) {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const useLightMode = useSelector(coreSelectors.useLightMode);
+  const userColor = useSelector(coreSelectors.userColor);
+
+  const lightTheme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: "light",
+          ...pallette,
+          primary: {
+            main: userColor,
+          },
+        },
+        typography: {
+          ...typography,
+          allVariants: {
+            fontWeight: 300,
+          },
+        },
+        components: {
+          ...components,
+          MuiButton: {
+            styleOverrides: {
+              root: {
+                color: "white",
+                textTransform: "unset",
+                boxShadow: "none",
+              },
+              contained: {
+                color: "white",
+              },
+              outlined: {
+                color: "black",
+              },
+              text: {
+                color: "black",
+              },
+            },
+          },
+          MuiDialogTitle: {
+            styleOverrides: {
+              root: {
+                background: "#f0f2f5",
+              },
+            },
+          },
+        },
+        breakpoints: breakpoints,
+      }),
+    [userColor]
+  );
+
+  const darkTheme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: "dark",
+          ...pallette,
+          primary: {
+            main: userColor,
+          },
+        },
+        typography: {
+          ...typography,
+          allVariants: {
+            fontWeight: 300,
+          },
+        },
+        components: {
+          ...components,
+          MuiButton: {
+            styleOverrides: {
+              root: {
+                color: "white",
+                textTransform: "unset",
+                boxShadow: "none",
+              },
+            },
+          },
+          MuiDialogTitle: {
+            styleOverrides: {
+              root: {
+                background: "#181818",
+              },
+            },
+          },
+          MuiDialogContent: {
+            styleOverrides: {
+              root: {
+                background: "#121212",
+              },
+            },
+          },
+        },
+        breakpoints: breakpoints,
+      }),
+    [userColor]
+  );
 
   return (
     <ThemeProvider theme={useLightMode ? lightTheme : darkTheme}>
