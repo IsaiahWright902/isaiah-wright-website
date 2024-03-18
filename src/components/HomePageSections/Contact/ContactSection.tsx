@@ -29,10 +29,8 @@ export default function ContactSection() {
   });
 
   const onSubmit = (data: SendEmailDTO) => {
-    // post here
-    console.log(data);
-
     dispatch(coreActions.sendEmail(data));
+    reset();
   };
 
   return (
