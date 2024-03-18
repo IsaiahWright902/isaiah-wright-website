@@ -1,11 +1,5 @@
 "use client";
-import {
-  Box,
-  Button,
-  Container,
-  CssBaseline,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Container, CssBaseline, useMediaQuery } from "@mui/material";
 import {
   BreakpointsOptions,
   Components,
@@ -26,14 +20,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { useMemo } from "react";
-
-const inter = Inter({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal"],
-  subsets: ["latin"],
-  fallback: ["Geneva, Helvetica, sans-serif"],
-  display: "swap",
-});
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
