@@ -8,7 +8,7 @@ export default function WorkInProgress() {
     <SectionContainer title="This Site is a Work In Progress :)">
       <Typography>
         I am currently working on this site daily in order to get it finished.
-        Check back every once in a while to see new sections & functionality :).
+        Check back every once in a while to see new sections & functionality.
       </Typography>
     </SectionContainer>
   );
