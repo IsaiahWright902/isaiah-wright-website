@@ -43,7 +43,6 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
 
   const handleColorClick = () => {
     dispatch(modalActions.open("userColorPickerModal"));
-    // dispatch(modalActions.open("welcomeModal"));
   };
 
   const toggleThemePreference = (val: boolean) => {
@@ -51,7 +50,14 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar
+      position="sticky"
+      sx={{
+        background: useLightMode
+          ? theme.palette.black.dark
+          : theme.palette.black.main,
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar
           disableGutters

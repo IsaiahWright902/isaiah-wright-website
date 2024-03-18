@@ -2,6 +2,7 @@
 
 import { ColorDot } from "@/components/ColorDot/ColorDot";
 import UserColorDivider from "@/components/UserColorDivider/UserColorDivider";
+
 import { coreSelectors } from "@/store/CoreState/selector";
 import { theme } from "@/theme/ThemeRegistry";
 import {
