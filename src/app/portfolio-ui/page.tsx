@@ -2,22 +2,13 @@
 
 import { ColorDot } from "@/components/ColorDot/ColorDot";
 import UserColorDivider from "@/components/UserColorDivider/UserColorDivider";
-
 import { coreSelectors } from "@/store/CoreState/selector";
+import { useAppSelector } from "@/store/store";
 import { theme } from "@/theme/ThemeRegistry";
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { useSelector } from "react-redux";
+import { Button, Container, Grid, Stack, Typography } from "@mui/material";
 
 export default function PortfolioUIPage() {
-  const userColor = useSelector(coreSelectors.userColor);
+  const userColor = useAppSelector(coreSelectors.userColor);
 
   const colors: { color: string; name: string }[] = [
     {

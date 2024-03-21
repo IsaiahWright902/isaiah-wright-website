@@ -1,6 +1,5 @@
 "use client";
 import { Grid, Stack, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
 import { skillSelectors } from "@/store/SkillState/selector";
 import UserChip from "@/components/UserChip/UserChip";
 import SkillSearchFilters from "./SkillSearchFilters";
@@ -9,6 +8,7 @@ import { Skill } from "@/store/SkillState/reducer";
 import { searchSelectors } from "@/store/SearchSlice/selector";
 import { IsYOEInSearchRange } from "@/store/SearchSlice/reducer";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
+import { useAppSelector } from "@/store/store";
 
 export default function SkillsSection() {
   const filteredSkills = useFilteredSkillList();
@@ -47,8 +47,8 @@ export default function SkillsSection() {
 }
 
 function useFilteredSkillList() {
-  const skillFilters = useSelector(searchSelectors.skillSearchFilters);
-  const allSkills = useSelector(skillSelectors.allSkills);
+  const skillFilters = useAppSelector(searchSelectors.skillSearchFilters);
+  const allSkills = useAppSelector(skillSelectors.allSkills);
 
   const [filteredSkills, setFilteredSkills] = useState<Skill[]>([]);
 

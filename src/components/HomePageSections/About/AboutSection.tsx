@@ -12,11 +12,11 @@ import Image from "next/image";
 import HeadShot from "@public/headshotNew.jpeg";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { theme } from "@/theme/ThemeRegistry";
-import { useSelector } from "react-redux";
 import AboutStyles from "./AboutStyles.module.css";
+import { useAppSelector } from "@/store/store";
 
 export default function AboutSection() {
-  const userColor = useSelector(coreSelectors.userColor);
+  const userColor = useAppSelector(coreSelectors.userColor);
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (

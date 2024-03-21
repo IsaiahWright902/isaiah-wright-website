@@ -1,8 +1,6 @@
 "use client";
-
 import { Typography } from "@mui/material";
 import SectionContainer from "../SectionContainer/SectionContainer";
-
 export default function WorkInProgress() {
   return (
     <SectionContainer title="This Site is a Work In Progress :)">

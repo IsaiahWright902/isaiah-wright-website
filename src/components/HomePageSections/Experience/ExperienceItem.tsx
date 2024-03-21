@@ -2,12 +2,12 @@
 
 import { coreSelectors } from "@/store/CoreState/selector";
 import { Grid, Typography, Paper, Stack, List } from "@mui/material";
-import { useSelector } from "react-redux";
 import { ExperienceBulletPoint } from "./ExperienceBulletPoint";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 
 import ExperienceStyles from "./ExperienceStyles.module.css";
+import { useAppSelector } from "@/store/store";
 
 export type ExperienceItemDTO = {
   companyName: string;
@@ -26,8 +26,8 @@ export default function ExperienceItem({
 }: {
   experienceItem: ExperienceItemDTO;
 }) {
-  const userColor = useSelector(coreSelectors.userColor);
-  const useLightMode = useSelector(coreSelectors.useLightMode);
+  const userColor = useAppSelector(coreSelectors.userColor);
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
   return (
     <Grid item xs={12}>
       <Paper

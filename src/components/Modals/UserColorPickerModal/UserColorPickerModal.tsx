@@ -1,7 +1,6 @@
 "use client";
 
 import BaseModal from "../BaseModal";
-import { useDispatch, useSelector } from "react-redux";
 import { modalSelectors } from "@/store/ModalState/selector";
 import { modalActions } from "@/store/ModalState/reducer";
 import { coreSelectors } from "@/store/CoreState/selector";
@@ -11,12 +10,13 @@ import { hexToRgbA } from "@/utils/general-utils";
 import { SketchPicker } from "react-color";
 import { useState } from "react";
 import { coreActions } from "@/store/CoreState/reducer";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 export default function UserColorPickerModal() {
-  const dispatch = useDispatch();
-  const isOpen = useSelector(modalSelectors.userColorPickerModal);
-  const userColor = useSelector(coreSelectors.userColor);
-  const useLightMode = useSelector(coreSelectors.useLightMode);
+  const dispatch = useAppDispatch();
+  const isOpen = useAppSelector(modalSelectors.userColorPickerModal);
+  const userColor = useAppSelector(coreSelectors.userColor);
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
 
   const handleClose = () => {
     dispatch(modalActions.close("userColorPickerModal"));

@@ -1,11 +1,5 @@
 "use client";
-import {
-  Box,
-  Button,
-  Container,
-  CssBaseline,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Container, CssBaseline, useMediaQuery } from "@mui/material";
 import {
   BreakpointsOptions,
   Components,
@@ -16,8 +10,7 @@ import {
 } from "@mui/material/styles";
 import { pallette } from "./palette";
 import ModalRegistry from "@/components/Modals/ModalRegistry";
-import { Poppins, Inter } from "next/font/google";
-import { useSelector } from "react-redux";
+import { Poppins } from "next/font/google";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 import Navbar from "@/components/Navbar/Navbar";
@@ -26,14 +19,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { useMemo } from "react";
-
-const inter = Inter({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal"],
-  subsets: ["latin"],
-  fallback: ["Geneva, Helvetica, sans-serif"],
-  display: "swap",
-});
+import { useAppSelector } from "@/store/store";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -147,8 +133,8 @@ export default function ThemeRegistry({
   children: React.ReactNode;
 }) {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const useLightMode = useSelector(coreSelectors.useLightMode);
-  const userColor = useSelector(coreSelectors.userColor);
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
+  const userColor = useAppSelector(coreSelectors.userColor);
 
   const lightTheme = useMemo(
     () =>

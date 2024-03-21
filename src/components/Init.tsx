@@ -2,12 +2,12 @@
 
 import { coreSelectors } from "@/store/CoreState/selector";
 import { modalActions } from "@/store/ModalState/reducer";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 export default function Init({ children }: { children: React.ReactNode }) {
-  const dispatch = useDispatch();
-  const isInitialVisit = useSelector(coreSelectors.isInitialVisit);
+  const dispatch = useAppDispatch();
+  const isInitialVisit = useAppSelector(coreSelectors.isInitialVisit);
 
   useEffect(() => {
     if (isInitialVisit) {

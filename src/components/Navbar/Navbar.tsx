@@ -18,17 +18,17 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { PortfolioLink, theme } from "@/theme/ThemeRegistry";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { useDispatch, useSelector } from "react-redux";
 import { coreSelectors } from "@/store/CoreState/selector";
 import { coreActions } from "@/store/CoreState/reducer";
 import { useRouter } from "next/navigation";
 import { modalActions } from "@/store/ModalState/reducer";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 export default function Navbar({ links }: { links: PortfolioLink[] }) {
   const router = useRouter();
-  const dispatch = useDispatch();
-  const useLightMode = useSelector(coreSelectors.useLightMode);
-  const userColor = useSelector(coreSelectors.userColor);
+  const dispatch = useAppDispatch();
+  const useLightMode = useAppSelector(coreSelectors.useLightMode);
+  const userColor = useAppSelector(coreSelectors.userColor);
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);

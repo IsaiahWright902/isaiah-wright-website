@@ -1,10 +1,10 @@
 "use client";
 import { coreSelectors } from "@/store/CoreState/selector";
+import { useAppSelector } from "@/store/store";
 import { Divider } from "@mui/material";
-import { useSelector } from "react-redux";
 
 export default function UserColorDivider() {
-  const userColor = useSelector(coreSelectors.userColor);
+  const userColor = useAppSelector(coreSelectors.userColor);
 
   return (
     <Divider

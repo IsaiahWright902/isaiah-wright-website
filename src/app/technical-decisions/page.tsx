@@ -1,8 +1,6 @@
 "use client";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSelector } from "react-redux";
-import { coreSelectors } from "@/store/CoreState/selector";
 import UserColorDivider from "@/components/UserColorDivider/UserColorDivider";
 
 export default function TechnicalDecisionsPage() {
