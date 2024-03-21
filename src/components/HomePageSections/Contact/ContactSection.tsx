@@ -20,7 +20,7 @@ export default function ContactSection() {
     formState: { errors, isDirty, isValid },
   } = useForm<SendEmailDTO>({
     defaultValues: {
-      toEmail: "",
+      email: "",
       subject: "",
       message: "",
       name: "",
@@ -53,9 +53,9 @@ export default function ContactSection() {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              {...register("toEmail")}
-              helperText={errors.toEmail?.message}
-              error={!!errors.toEmail?.message}
+              {...register("email")}
+              helperText={errors.email?.message}
+              error={!!errors.email?.message}
               fullWidth
               variant="standard"
               label="Email"
