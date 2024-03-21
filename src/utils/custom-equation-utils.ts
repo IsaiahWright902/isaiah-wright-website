@@ -1,6 +1,30 @@
-import { Operator } from "@/app/custom-equation-builder/page";
+export enum Operator {
+  Addition = 1,
+  Subtraction = 2,
+  Multiplication = 3,
+  Division = 4,
+  Base = 5,
+}
 
-export function GetOperatorDisplay(operator: Operator) {
+export type CustomEquation = {
+  id: number;
+  name: string;
+  items: EquationItem[];
+  result: EquationResult;
+};
+
+export type EquationResult = {
+  value: number;
+  label: string;
+};
+
+export type EquationItem = {
+  label: string;
+  value: number;
+  operator: Operator;
+};
+
+export function getOperatorDisplay(operator: Operator) {
   switch (operator) {
     case Operator.Addition:
       return "(+)";
@@ -13,4 +37,30 @@ export function GetOperatorDisplay(operator: Operator) {
     default:
       return "Error";
   }
+}
+
+export function calculateEquationResult(items: EquationItem[]) {
+  let isMultiplicationOnly = items.every(
+    (item) => item.operator === Operator.Multiplication
+  );
+
+  const total = items.reduce(
+    (acc, item) => {
+      switch (item.operator) {
+        case Operator.Addition:
+          return acc + item.value;
+        case Operator.Subtraction:
+          return acc - item.value;
+        case Operator.Multiplication:
+          return acc * item.value;
+        case Operator.Division:
+          return acc / item.value;
+        default:
+          return acc;
+      }
+    },
+    isMultiplicationOnly ? 1 : 0
+  );
+
+  return isNaN(total) ? 0 : total;
 }
