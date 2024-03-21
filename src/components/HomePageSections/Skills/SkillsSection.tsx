@@ -62,15 +62,15 @@ function useFilteredSkillList() {
             .includes(normalizedSearch);
 
           const categoryMatches =
-            skillFilters.category === null ||
+            skillFilters.category === "" ||
             x.category === skillFilters.category;
 
           const proficiencyMatches =
-            skillFilters.proficiency === null ||
+            skillFilters.proficiency === "" ||
             x.proficiency === skillFilters.proficiency;
 
           const yearsOfExperiencePasses =
-            skillFilters.yearsOfExperience === null ||
+            skillFilters.yearsOfExperience === "" ||
             IsYOEInSearchRange(
               skillFilters.yearsOfExperience,
               x.yearsOfExperience

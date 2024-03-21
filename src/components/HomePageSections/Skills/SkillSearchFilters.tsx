@@ -70,19 +70,19 @@ export default function SkillSearchFilters() {
       case SkillSearchCollection.Category:
         handleFilterUpdate({
           ...skillFilters,
-          category: null,
+          category: "",
         });
         break;
       case SkillSearchCollection.Proficiency:
         handleFilterUpdate({
           ...skillFilters,
-          proficiency: null,
+          proficiency: "",
         });
         break;
       case SkillSearchCollection.YearsOfExperience:
         handleFilterUpdate({
           ...skillFilters,
-          yearsOfExperience: null,
+          yearsOfExperience: "",
         });
       default:
         return;
@@ -149,6 +149,7 @@ export default function SkillSearchFilters() {
       <Grid item xs={12} sm={4}>
         <TextField
           value={skillFilters.category}
+          defaultValue={""}
           onChange={(e) => handleCategoryChange(e.target.value)}
           select
           label="Technology Category"
@@ -160,9 +161,9 @@ export default function SkillSearchFilters() {
                 <IconButton
                   sx={{
                     transition: "all 0.6s",
-                    opacity: skillFilters.category !== null ? 100 : 0,
+                    opacity: skillFilters.category !== "" ? 100 : 0,
                     cursor:
-                      skillFilters.category !== null ? "pointer" : "default",
+                      skillFilters.category !== "" ? "pointer" : "default",
                     marginRight: "20px",
                   }}
                   aria-label="clear"
@@ -184,12 +185,14 @@ export default function SkillSearchFilters() {
             Database Technology
           </MenuItem>
           <MenuItem value={SkillCategory.CloudService}>Cloud Services</MenuItem>
+          <MenuItem value={SkillCategory.SoftSkill}>Soft Skill</MenuItem>
           <MenuItem value={SkillCategory.Other}>Other</MenuItem>
         </TextField>
       </Grid>
       <Grid item xs={12} sm={4}>
         <TextField
           value={skillFilters.proficiency}
+          defaultValue={""}
           onChange={(e) => handleProficiencyChange(e.target.value)}
           select
           label="Proficiency Level"
@@ -201,9 +204,9 @@ export default function SkillSearchFilters() {
                 <IconButton
                   sx={{
                     transition: "all 0.6s",
-                    opacity: skillFilters.proficiency !== null ? 100 : 0,
+                    opacity: skillFilters.proficiency !== "" ? 100 : 0,
                     cursor:
-                      skillFilters.proficiency !== null ? "pointer" : "default",
+                      skillFilters.proficiency !== "" ? "pointer" : "default",
                     marginRight: "20px",
                   }}
                   aria-label="clear"
@@ -241,9 +244,9 @@ export default function SkillSearchFilters() {
                 <IconButton
                   sx={{
                     transition: "all 0.6s",
-                    opacity: skillFilters.yearsOfExperience !== null ? 100 : 0,
+                    opacity: skillFilters.yearsOfExperience !== "" ? 100 : 0,
                     cursor:
-                      skillFilters.yearsOfExperience !== null
+                      skillFilters.yearsOfExperience !== ""
                         ? "pointer"
                         : "default",
                     marginRight: "20px",

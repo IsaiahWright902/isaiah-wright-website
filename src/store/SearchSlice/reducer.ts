@@ -7,7 +7,10 @@ export enum YearsOfExperience {
   ThreeOrMore = 3,
 }
 
-export function IsYOEInSearchRange(filter: YearsOfExperience, val: number) {
+export function IsYOEInSearchRange(
+  filter: YearsOfExperience | string,
+  val: number
+) {
   switch (filter) {
     case YearsOfExperience.OneToTwo:
       return val >= 1 && val <= 2;
@@ -22,9 +25,9 @@ export function IsYOEInSearchRange(filter: YearsOfExperience, val: number) {
 
 export type SkillFilter = {
   search: string;
-  category: SkillCategory | null;
-  proficiency: SkillProficiency | null;
-  yearsOfExperience: YearsOfExperience | null;
+  category: SkillCategory | string;
+  proficiency: SkillProficiency | string;
+  yearsOfExperience: YearsOfExperience | string;
 };
 
 export type SearchState = {
@@ -34,9 +37,9 @@ export type SearchState = {
 const initialState: SearchState = {
   skillFilter: {
     search: "",
-    category: null,
-    proficiency: null,
-    yearsOfExperience: null,
+    category: "",
+    proficiency: "",
+    yearsOfExperience: "",
   },
 };
 
