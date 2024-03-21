@@ -8,6 +8,7 @@ export enum SkillCategory {
   DatabaseTechnology = 4,
   CloudService = 5,
   Other = 6,
+  SoftSkill = 7,
 }
 
 export type Skill = {
@@ -205,19 +206,19 @@ const initialState: SkillState = {
       name: "Communication",
       yearsOfExperience: 10,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.Language,
+      category: SkillCategory.SoftSkill,
     },
     {
       name: "Problem Solving",
       yearsOfExperience: 10,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.Other,
+      category: SkillCategory.SoftSkill,
     },
     {
       name: "Critical Thinking",
       yearsOfExperience: 10,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.Other,
+      category: SkillCategory.SoftSkill,
     },
     {
       name: "SendGrid",
