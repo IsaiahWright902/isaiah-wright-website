@@ -21,7 +21,7 @@ export default function ProjectsSection() {
   ];
 
   return (
-    <SectionContainer title="Projects">
+    <SectionContainer title="Projects" subtitle="More coming soon!">
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Typography>
