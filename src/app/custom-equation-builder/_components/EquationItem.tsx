@@ -20,13 +20,16 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { SetStateAction } from "react";
 
 export default function CustomEquationItem({
   customEquation,
   handleInputChange,
+  setEquationToDelete,
 }: {
   customEquation: CustomEquation;
   handleInputChange: (id: number, index: number, value: number) => void;
+  setEquationToDelete: React.Dispatch<SetStateAction<CustomEquation | null>>;
 }) {
   const userColor = useAppSelector(coreSelectors.userColor);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -59,7 +62,7 @@ export default function CustomEquationItem({
 
             <Stack justifyContent="flex-end">
               <Tooltip title="Delete Equation">
-                <IconButton>
+                <IconButton onClick={() => setEquationToDelete(customEquation)}>
                   <DeleteIcon fontSize="small" />
                 </IconButton>
               </Tooltip>

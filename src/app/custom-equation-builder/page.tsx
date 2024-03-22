@@ -12,9 +12,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import CustomEquationItem from "./_components/EquationItem";
 import NewEquationModal from "./_components/NewEquationModal";
+import ConfirmDeleteEquationModal from "./_components/ConfirmDeleteEquationModal";
 
 export default function CustomEquationBlockPage() {
   const [isNewEquationModalOpen, setIsNewEquationModalOpen] = useState(false);
+  const [equationToDelete, setEquationToDelete] =
+    useState<CustomEquation | null>(null);
 
   const [customEquations, setCustomEquations] = useState<CustomEquation[]>([
     {
@@ -77,6 +80,18 @@ export default function CustomEquationBlockPage() {
     setCustomEquations([...customEquations, newEquation]);
   };
 
+  const handleDeleteEquation = (confirmed: boolean) => {
+    if (confirmed) {
+      setCustomEquations(
+        customEquations.filter((x) => x.id !== equationToDelete?.id)
+      );
+
+      toast.success(`Deleted ${equationToDelete?.name}!`);
+    }
+
+    setEquationToDelete(null);
+  };
+
   return (
     <>
       <PageContainer
@@ -113,6 +128,7 @@ export default function CustomEquationBlockPage() {
               key={equation.id}
               customEquation={equation}
               handleInputChange={handleInputChange}
+              setEquationToDelete={setEquationToDelete}
             />
           ))}
         </Stack>
@@ -121,6 +137,11 @@ export default function CustomEquationBlockPage() {
         isOpen={isNewEquationModalOpen}
         handleClose={() => setIsNewEquationModalOpen(false)}
         handleAddEquation={handleAddEquation}
+      />
+      <ConfirmDeleteEquationModal
+        equationToDelete={equationToDelete}
+        handleClose={() => setEquationToDelete(null)}
+        handleDeleteEquation={handleDeleteEquation}
       />
     </>
   );
