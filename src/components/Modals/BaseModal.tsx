@@ -17,6 +17,7 @@ export type BaseModalProps = {
   fullWidth?: boolean;
   handleClose: () => void;
   children: React.ReactNode;
+  maxWidth?: string;
 };
 
 const Transition2 = React.forwardRef(function Transition2(props, ref) {
@@ -30,12 +31,15 @@ export default function BaseModal({
   fullWidth = true,
   handleClose,
   children,
+  maxWidth = "sm",
 }: BaseModalProps) {
   return (
     <Dialog
       open={isOpen}
       fullWidth={fullWidth}
       onClose={handleClose}
+      // @ts-ignore
+      maxWidth={maxWidth}
       // @ts-ignore
       TransitionComponent={Transition2}
     >

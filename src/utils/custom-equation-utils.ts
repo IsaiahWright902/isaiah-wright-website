@@ -1,9 +1,28 @@
+import { string, z } from "zod";
+export const createEquationResultValidator = z.object({
+  label: z.string().min(1).max(255),
+  value: z.number().default(0),
+});
+
+export const createEquationItemsValidator = z.object({
+  label: z.string().min(1).max(255),
+  value: z.number().default(0),
+  operator: z.number().default(5),
+});
+
+export const createEquationValidator = z.object({
+  name: z.string().min(1).max(255),
+  resultLabel: z.string().min(1).max(255),
+  items: z.array(createEquationItemsValidator),
+});
+
+export type CreateEquationDTO = z.infer<typeof createEquationValidator>;
+
 export enum Operator {
   Addition = 1,
   Subtraction = 2,
   Multiplication = 3,
   Division = 4,
-  Base = 5,
 }
 
 export type CustomEquation = {
