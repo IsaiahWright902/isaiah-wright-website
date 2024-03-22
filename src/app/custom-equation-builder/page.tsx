@@ -13,10 +13,14 @@ import toast from "react-hot-toast";
 import CustomEquationItem from "./_components/EquationItem";
 import NewEquationModal from "./_components/NewEquationModal";
 import ConfirmDeleteEquationModal from "./_components/ConfirmDeleteEquationModal";
+import UpdateEquationModal from "./_components/UpdateEquationModal";
 
 export default function CustomEquationBlockPage() {
   const [isNewEquationModalOpen, setIsNewEquationModalOpen] = useState(false);
   const [equationToDelete, setEquationToDelete] =
+    useState<CustomEquation | null>(null);
+
+  const [equationToUpdate, setEquationToUpdate] =
     useState<CustomEquation | null>(null);
 
   const [customEquations, setCustomEquations] = useState<CustomEquation[]>([
@@ -56,7 +60,6 @@ export default function CustomEquationBlockPage() {
       toast.error("Something went wrong");
       return;
     }
-
     // @ts-ignore
     equationToUpdate.items[valueIndex].value = isNaN(value) ? "" : value;
     equationToUpdate.result.value = calculateEquationResult(
@@ -78,6 +81,37 @@ export default function CustomEquationBlockPage() {
     };
 
     setCustomEquations([...customEquations, newEquation]);
+  };
+
+  const handleUpdateEquation = (data: CreateEquationDTO) => {
+    const foundEquation = customEquations.find(
+      (x) => x.id === equationToUpdate!.id
+    );
+
+    if (!foundEquation) {
+      toast.error("Could not update equation :(");
+      setEquationToUpdate(null);
+    }
+
+    const updatedEquations = customEquations.map((equation) => {
+      if (equation.id === equationToUpdate!.id) {
+        return {
+          id: equation.id,
+          name: data.name ?? equation.name,
+          result: {
+            label: data.resultLabel ?? equation.result.label,
+            value: calculateEquationResult(data.items),
+          },
+          items: data.items,
+        };
+      } else {
+        return equation;
+      }
+    });
+
+    // @ts-ignore
+    setCustomEquations(updatedEquations);
+    setEquationToUpdate(null);
   };
 
   const handleDeleteEquation = (confirmed: boolean) => {
@@ -123,12 +157,13 @@ export default function CustomEquationBlockPage() {
           </Grid>
         </Grid>
         <Stack spacing={4}>
-          {customEquations.map((equation) => (
+          {customEquations.map((equation, idx) => (
             <CustomEquationItem
-              key={equation.id}
+              key={idx}
               customEquation={equation}
               handleInputChange={handleInputChange}
               setEquationToDelete={setEquationToDelete}
+              setEquationToUpdate={setEquationToUpdate}
             />
           ))}
         </Stack>
@@ -142,6 +177,11 @@ export default function CustomEquationBlockPage() {
         equationToDelete={equationToDelete}
         handleClose={() => setEquationToDelete(null)}
         handleDeleteEquation={handleDeleteEquation}
+      />
+      <UpdateEquationModal
+        equationToUpdate={equationToUpdate}
+        handleClose={() => setEquationToUpdate(null)}
+        handleUpdateEquation={handleUpdateEquation}
       />
     </>
   );

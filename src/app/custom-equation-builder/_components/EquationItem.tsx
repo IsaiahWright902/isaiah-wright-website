@@ -26,15 +26,17 @@ export default function CustomEquationItem({
   customEquation,
   handleInputChange,
   setEquationToDelete,
+  setEquationToUpdate,
 }: {
   customEquation: CustomEquation;
   handleInputChange: (id: number, index: number, value: number) => void;
   setEquationToDelete: React.Dispatch<SetStateAction<CustomEquation | null>>;
+  setEquationToUpdate: React.Dispatch<SetStateAction<CustomEquation | null>>;
 }) {
   const userColor = useAppSelector(coreSelectors.userColor);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const gridSize = 12 / (customEquation.items.length + 1);
+  const gridSize = 12 / (customEquation?.items?.length + 1);
   return (
     <Box
       sx={{
@@ -52,9 +54,9 @@ export default function CustomEquationItem({
             justifyContent="space-between"
           >
             <Stack direction="row" alignItems="center" spacing={1}>
-              <Typography variant="h4">{customEquation.name}</Typography>
+              <Typography variant="h4">{customEquation?.name}</Typography>
               <Tooltip title="Edit Equation">
-                <IconButton>
+                <IconButton onClick={() => setEquationToUpdate(customEquation)}>
                   <EditIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
@@ -69,7 +71,7 @@ export default function CustomEquationItem({
             </Stack>
           </Stack>
         </Grid>
-        {customEquation.items.map((item, idx) => (
+        {customEquation?.items.map((item, idx) => (
           <Grid key={idx} item xs={isMobile ? 12 : gridSize}>
             <TextField
               InputProps={{
@@ -86,7 +88,7 @@ export default function CustomEquationItem({
               type="number"
               fullWidth
               variant="standard"
-              label={`${item.label} ${getOperatorDisplay(item.operator)}`}
+              label={`${item?.label} ${getOperatorDisplay(item?.operator)}`}
             />
           </Grid>
         ))}
@@ -95,10 +97,10 @@ export default function CustomEquationItem({
 
           <TextField
             fullWidth
-            value={customEquation.result.value}
+            value={customEquation?.result?.value}
             disabled
             variant="outlined"
-            label={customEquation.result.label}
+            label={customEquation?.result?.label}
           />
         </Grid>
       </Grid>

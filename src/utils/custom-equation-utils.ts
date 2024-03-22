@@ -1,4 +1,5 @@
-import { string, z } from "zod";
+import { number, string, z } from "zod";
+import { evaluate } from "mathjs";
 export const createEquationResultValidator = z.object({
   label: z.string().min(1).max(255),
   value: z.number().default(0),
@@ -53,6 +54,21 @@ export function getOperatorDisplay(operator: Operator) {
       return "(*)";
     case Operator.Division:
       return "(/)";
+    default:
+      return "Error";
+  }
+}
+
+export function getOperator(operator: Operator) {
+  switch (operator) {
+    case Operator.Addition:
+      return "+";
+    case Operator.Subtraction:
+      return "-";
+    case Operator.Multiplication:
+      return "*";
+    case Operator.Division:
+      return "/";
     default:
       return "Error";
   }

@@ -1,33 +1,35 @@
 import BaseModal from "@/components/Modals/BaseModal";
 import {
-  Button,
+  CreateEquationDTO,
+  CustomEquation,
+  Operator,
+  createEquationValidator,
+} from "@/utils/custom-equation-utils";
+import { fields } from "@hookform/resolvers/ajv/src/__tests__/__fixtures__/data.js";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
   Grid,
+  Typography,
+  Button,
   IconButton,
   MenuItem,
   Stack,
   TextField,
   Tooltip,
-  Typography,
 } from "@mui/material";
-import React from "react";
-import AddIcon from "@mui/icons-material/Add";
+import { useForm, useFieldArray } from "react-hook-form";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useFieldArray, useForm } from "react-hook-form";
-import {
-  CreateEquationDTO,
-  Operator,
-  createEquationValidator,
-} from "@/utils/custom-equation-utils";
-import { zodResolver } from "@hookform/resolvers/zod";
+import AddIcon from "@mui/icons-material/Add";
+import { useEffect } from "react";
 
-export default function NewEquationModal({
-  isOpen,
+export default function UpdateEquationModal({
+  equationToUpdate,
   handleClose,
-  handleAddEquation,
+  handleUpdateEquation,
 }: {
-  isOpen: boolean;
+  equationToUpdate?: CustomEquation | null;
   handleClose: () => void;
-  handleAddEquation: (data: CreateEquationDTO) => void;
+  handleUpdateEquation: (data: CreateEquationDTO) => void;
 }) {
   const {
     handleSubmit,
@@ -51,7 +53,7 @@ export default function NewEquationModal({
     resolver: zodResolver(createEquationValidator),
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, update, remove } = useFieldArray({
     name: "items",
     control,
   });
@@ -65,24 +67,24 @@ export default function NewEquationModal({
   };
 
   const onSubmit = (data: CreateEquationDTO) => {
-    handleAddEquation(data);
-    reset();
-    handleClose();
+    handleUpdateEquation(data);
   };
 
-  const handleCloseWithReset = () => {
-    reset();
-    handleClose();
-  };
+  useEffect(() => {
+    reset({
+      name: equationToUpdate?.name,
+      resultLabel: equationToUpdate?.result.label,
+      items: equationToUpdate?.items,
+    });
+  }, [equationToUpdate]);
 
-  const deleteDisabled = fields.length >= 1;
+  if (!equationToUpdate) return null;
 
   return (
     <BaseModal
-      isOpen={isOpen}
-      title="Create New Equation"
-      handleClose={handleCloseWithReset}
-      maxWidth="sm"
+      title={`Update Equation`}
+      isOpen={!!equationToUpdate}
+      handleClose={handleClose}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid pt={2} pb={2} container spacing={4} alignItems="flex-end">
@@ -153,14 +155,13 @@ export default function NewEquationModal({
                   variant="standard"
                   label="Operator"
                   defaultValue={Operator.Addition}
+                  value={watch(`items.${idx}.operator`)}
                   {...register(`items.${idx}.operator`)}
                 >
-                  <MenuItem value={Operator.Addition}>Add (+)</MenuItem>
-                  <MenuItem value={Operator.Subtraction}>Subtract (-)</MenuItem>
-                  <MenuItem value={Operator.Multiplication}>
-                    Multiply (*)
-                  </MenuItem>
-                  <MenuItem value={Operator.Division}>Divide (/)</MenuItem>
+                  <MenuItem value={1}>Add (+)</MenuItem>
+                  <MenuItem value={2}>Subtract (-)</MenuItem>
+                  <MenuItem value={3}>Multiply (*)</MenuItem>
+                  <MenuItem value={4}>Divide (/)</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={2}>
@@ -183,7 +184,7 @@ export default function NewEquationModal({
               fullWidth
               variant="contained"
             >
-              Add Equation +
+              Update Equation
             </Button>
           </Grid>
         </Grid>
