@@ -158,8 +158,9 @@ export default function CustomEquationBlockPage() {
             <Typography>
               This UI allows you to build you own custom math equations with
               labels and values. To illustrate what this functionality can do
-              below you will find an example that calculates Square Footage.
-              Feel free to add your own equations or edit the existing example.
+              below you will find two examples that calculate Square Footage &
+              Volume. Feel free to add your own equations or edit the existing
+              example.
             </Typography>
           </Grid>
           <Grid item xs={12} pb={4}>
