@@ -1,6 +1,7 @@
 import {
   Operator,
   calculateEquationResult,
+  getOperator,
 } from "@/utils/custom-equation-utils";
 
 describe("Calculate Equation Results - Base", () => {
@@ -34,5 +35,20 @@ describe("Calculate Equation Results - Base", () => {
         { label: "val 1", operator: Operator.Multiplication, value: 1 },
       ])
     ).toBe(1);
+  });
+});
+
+describe("Calculate Equation Results - Get Operator Working as Expected", () => {
+  it("should return +", () => {
+    expect(getOperator(Operator.Addition)).toBe("+");
+  });
+  it("should return -", () => {
+    expect(getOperator(Operator.Subtraction)).toBe("-");
+  });
+  it("should return *", () => {
+    expect(getOperator(Operator.Multiplication)).toBe("*");
+  });
+  it("should return /", () => {
+    expect(getOperator(Operator.Division)).toBe("/");
   });
 });
