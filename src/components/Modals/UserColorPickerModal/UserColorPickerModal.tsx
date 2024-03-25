@@ -98,7 +98,9 @@ export default function UserColorPickerModal() {
           </Stack>
         </Stack>
         <Stack pt={2}>
-          <Button variant="outlined">Close Modal</Button>
+          <Button onClick={handleClose} variant="outlined">
+            Close Modal
+          </Button>
         </Stack>
       </Stack>
     </BaseModal>
