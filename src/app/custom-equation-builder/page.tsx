@@ -49,7 +49,7 @@ export default function CustomEquationBlockPage() {
       name: "Volume",
       result: {
         value: 960,
-        label: "Total SqFt",
+        label: "Total Volume",
       },
       items: [
         {
