@@ -79,6 +79,12 @@ export function calculateEquationResult(items: EquationItem[]) {
     (item) => item.operator === Operator.Multiplication
   );
 
+  const containsMultiplicationOrDivision = items.some(
+    (item) =>
+      item.operator === Operator.Multiplication ||
+      item.operator === Operator.Division
+  );
+
   const total = items.reduce(
     (acc, item) => {
       switch (item.operator) {
@@ -94,8 +100,12 @@ export function calculateEquationResult(items: EquationItem[]) {
           return acc;
       }
     },
-    isMultiplicationOnly ? 1 : 0
+    containsMultiplicationOrDivision ? 1 : 0
   );
 
   return isNaN(total) ? 0 : total;
+}
+
+export function TestFunction(a: number, b: number) {
+  return a + b;
 }
