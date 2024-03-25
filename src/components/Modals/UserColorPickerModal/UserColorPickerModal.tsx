@@ -4,7 +4,7 @@ import BaseModal from "../BaseModal";
 import { modalSelectors } from "@/store/ModalState/selector";
 import { modalActions } from "@/store/ModalState/reducer";
 import { coreSelectors } from "@/store/CoreState/selector";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { theme } from "@/theme/ThemeRegistry";
 import { hexToRgbA } from "@/utils/general-utils";
 import { SketchPicker } from "react-color";
@@ -96,6 +96,9 @@ export default function UserColorPickerModal() {
               disableAlpha
             />
           </Stack>
+        </Stack>
+        <Stack pt={2}>
+          <Button variant="outlined">Close Modal</Button>
         </Stack>
       </Stack>
     </BaseModal>
