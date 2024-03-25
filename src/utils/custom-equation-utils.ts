@@ -75,34 +75,36 @@ export function getOperator(operator: Operator) {
 }
 
 export function calculateEquationResult(items: EquationItem[]) {
-  let isMultiplicationOnly = items.every(
-    (item) => item.operator === Operator.Multiplication
-  );
+  // Initialize the accumulator with the value of the first item
+  let total = items.length > 0 ? items[0].value : 0;
 
-  const containsMultiplicationOrDivision = items.some(
-    (item) =>
-      item.operator === Operator.Multiplication ||
-      item.operator === Operator.Division
-  );
+  // Start iteration from the second item
+  for (let i = 1; i < items.length; i++) {
+    const item = items[i];
+    switch (item.operator) {
+      case Operator.Addition:
+        total += item.value;
+        break;
+      case Operator.Subtraction:
+        total -= item.value;
+        break;
+      case Operator.Multiplication:
+        total *= item.value;
+        break;
+      case Operator.Division:
+        if (item.value === 0) {
+          // Handle division by zero
+          total = 0;
+          continue;
+        }
+        total /= item.value;
+        break;
+      default:
+        break;
+    }
+  }
 
-  const total = items.reduce(
-    (acc, item) => {
-      switch (item.operator) {
-        case Operator.Addition:
-          return acc + item.value;
-        case Operator.Subtraction:
-          return acc - item.value;
-        case Operator.Multiplication:
-          return acc * item.value;
-        case Operator.Division:
-          return acc / item.value;
-        default:
-          return acc;
-      }
-    },
-    containsMultiplicationOrDivision ? 1 : 0
-  );
-
+  // Return 0 if the result is NaN or if there were no items
   return isNaN(total) ? 0 : total;
 }
 
