@@ -28,8 +28,28 @@ export default function CustomEquationBlockPage() {
       id: 1,
       name: "Square Footage",
       result: {
-        value: 960,
+        value: 120,
         label: "Total SqFt",
+      },
+      items: [
+        {
+          label: "Length",
+          value: 10,
+          operator: Operator.Multiplication,
+        },
+        {
+          label: "Width",
+          value: 12,
+          operator: Operator.Multiplication,
+        },
+      ],
+    },
+    {
+      id: 1,
+      name: "Volume",
+      result: {
+        value: 960,
+        label: "Total Volume",
       },
       items: [
         {
