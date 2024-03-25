@@ -11,7 +11,13 @@ export const POST = await withHandler<SendEmailDTO>(
       to: "icwright902@gmail.com",
       from: "icwright902@gmail.com",
       subject: requestBody.subject,
-      text: requestBody.message,
+      html: `
+      <p>Name: ${requestBody.name}</p>
+      <br />
+      <p>Email: ${requestBody.email}</p>
+      <br />
+      <p>${requestBody.message}</p>
+      `,
     };
 
     sgMail
