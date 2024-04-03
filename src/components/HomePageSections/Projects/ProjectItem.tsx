@@ -27,12 +27,23 @@ export default function ProjectItem({ project }: { project: ProjectMapItem }) {
     >
       <Paper
         elevation={isHovered ? 10 : 4}
-        sx={{ border: `1px solid ${userColor}`, borderRadius: "8px" }}
+        sx={{
+          border: `1px solid ${userColor}`,
+          borderRadius: "8px",
+          height: "100%",
+        }}
       >
-        <Box sx={{ padding: "10px" }}>
-          <Stack spacing={2}>
-            <Typography variant="h5">{project.title}</Typography>
-            <Typography>{project.description}</Typography>
+        <Box sx={{ padding: "10px", height: "100%" }}>
+          <Stack
+            spacing={2}
+            justifyContent="space-between"
+            sx={{ height: "100%" }}
+          >
+            <Stack spacing={2}>
+              <Typography variant="h5">{project.title}</Typography>
+              <Typography>{project.description}</Typography>
+            </Stack>
+
             <Stack
               direction="row"
               alignItems="center"
