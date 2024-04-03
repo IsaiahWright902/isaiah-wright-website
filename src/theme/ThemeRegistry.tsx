@@ -122,7 +122,7 @@ const links: PortfolioLink[] = [
   },
   {
     name: "Resume",
-    url: "https://github.com/IsaiahWright902/Resume/blob/master/IsaiahWrightResume%20.pdf",
+    url: "https://github.com/IsaiahWright902/Resume/blob/master/Isaiah_Wright_Resume.pdf",
     icon: <PictureAsPdfIcon />,
   },
 ];
