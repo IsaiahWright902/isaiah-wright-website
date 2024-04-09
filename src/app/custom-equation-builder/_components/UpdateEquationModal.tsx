@@ -5,7 +5,6 @@ import {
   Operator,
   createEquationValidator,
 } from "@/utils/custom-equation-utils";
-import { fields } from "@hookform/resolvers/ajv/src/__tests__/__fixtures__/data.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Grid,
