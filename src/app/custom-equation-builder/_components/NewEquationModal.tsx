@@ -75,8 +75,6 @@ export default function NewEquationModal({
     handleClose();
   };
 
-  const deleteDisabled = fields.length >= 1;
-
   return (
     <BaseModal
       isOpen={isOpen}
