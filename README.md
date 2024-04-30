@@ -11,7 +11,7 @@ Searchable skills with a pie chart to showcase proficency and years used.
 
 Easily scalable and maintainable componets for rapid changes.
 
-This site will serve a future platform for me to play with technologies and ideas that make me excited. See tuned to watch it grow overtime and see more side projects!
+This site will serve a future platform for me to play with technologies and ideas that make me excited. Stay tuned to watch it grow overtime and see more side projects!
 
 # Technologies Used:
 ### Front End
