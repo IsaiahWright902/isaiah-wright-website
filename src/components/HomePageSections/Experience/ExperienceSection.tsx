@@ -4,11 +4,28 @@ import MLLogoWhite from "@public/madelabs-logo-white.png";
 import MLLogoDark from "@public/madelabs-logo-dark.png";
 import UWRGLogo from "@public/UWRG-Logo-sm.png";
 import BCWLogo from "@public/codeworks.png";
+import TylerTechLogo from "@public/tyler-tech-logo.png"
 import ExperienceItem, { ExperienceItemDTO } from "./ExperienceItem";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 
 export default function ExperienceSection() {
   const experienceItems: ExperienceItemDTO[] = [
+    {
+      companyName: "Tyler Technologies",
+      position: "Software Engineer",
+      startDate: "May 2024",
+      endDate: "Present",
+      location: "Remote, United States",
+      bulletPoints: [
+        "Resolved bug and feature tickets using C# .NET, Genero, and Angular, enhancing application functionality and user experience by systematically identifying and addressing issues to improve overall system performance.",
+        "Assisted in developing a comprehensive documentation strategy in collaboration with leadership, streamlining processes and improving team knowledge sharing and onboarding for new members.",
+        "Facilitated team training sessions, providing tailored learning resources on modern best practices and fostering a culture of continuous improvement and technical growth.",
+        "Led multiple code refactors, breaking code into cleaner, more readable components, resulting in an impressive 80% increase in processing speed on key workflows, which significantly improved application responsiveness",
+        "Collaborated with cross-departmental teams to understand and integrate shared and external services, effectively sharing insights and best practices to enhance overall operational efficiency.",
+      ],
+      logo: TylerTechLogo,
+      logoMaxWidth: "400px",
+    },
     {
       companyName: "MadeLabs",
       position: "Software Engineer",
