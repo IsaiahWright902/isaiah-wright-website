@@ -24,7 +24,7 @@ export default function ExperienceSection() {
         "Collaborated with cross-departmental teams to understand and integrate shared and external services, effectively sharing insights and best practices to enhance overall operational efficiency.",
       ],
       logo: TylerTechLogo,
-      logoMaxWidth: "300px",
+      logoMaxWidth: "325px",
     },
     {
       companyName: "MadeLabs",
