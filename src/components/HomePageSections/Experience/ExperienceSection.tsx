@@ -17,7 +17,7 @@ export default function ExperienceSection() {
       endDate: "Present",
       location: "Remote, United States",
       bulletPoints: [
-        "Resolved bug and feature tickets using C# .NET, Genero, and Angular, enhancing application functionality and user experience by systematically identifying and addressing issues to improve overall system performance.",
+        "Resolved bug and feature tickets using C# .NET, and Angular enhancing application functionality and user experience by systematically identifying and addressing issues to improve overall system performance.",
         "Assisted in developing a comprehensive documentation strategy in collaboration with leadership, streamlining processes and improving team knowledge sharing and onboarding for new members.",
         "Facilitated team training sessions, providing tailored learning resources on modern best practices and fostering a culture of continuous improvement and technical growth.",
         "Led multiple code refactors, breaking code into cleaner, more readable components, resulting in an impressive 80% increase in processing speed on key workflows, which significantly improved application responsiveness.",
