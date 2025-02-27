@@ -54,8 +54,8 @@ const initialState: SkillState = {
     },
     {
       name: "C#",
-      yearsOfExperience: 3,
-      proficiency: SkillProficiency.Intermediate,
+      yearsOfExperience: 4,
+      proficiency: SkillProficiency.Advanced,
       category: SkillCategory.Language,
     },
     {
@@ -72,8 +72,8 @@ const initialState: SkillState = {
     },
     {
       name: "Entity Framework",
-      yearsOfExperience: 1.5,
-      proficiency: SkillProficiency.Intermediate,
+      yearsOfExperience: 3,
+      proficiency: SkillProficiency.Advanced,
       category: SkillCategory.BackEnd,
     },
     {
@@ -131,6 +131,12 @@ const initialState: SkillState = {
       category: SkillCategory.FrontEnd,
     },
     {
+      name: "Angular",
+      yearsOfExperience: 2,
+      proficiency: SkillProficiency.Advanced,
+      category: SkillCategory.FrontEnd,
+    },
+    {
       name: "React Native",
       yearsOfExperience: 1,
       proficiency: SkillProficiency.Intermediate,
@@ -144,13 +150,13 @@ const initialState: SkillState = {
     },
     {
       name: "Redux",
-      yearsOfExperience: 1.5,
+      yearsOfExperience: 2,
       proficiency: SkillProficiency.Advanced,
       category: SkillCategory.FrontEnd,
     },
     {
       name: "Relational Databases",
-      yearsOfExperience: 3,
+      yearsOfExperience: 4,
       proficiency: SkillProficiency.Advanced,
       category: SkillCategory.DatabaseTechnology,
     },
@@ -162,19 +168,19 @@ const initialState: SkillState = {
     },
     {
       name: "Source & Version Control",
-      yearsOfExperience: 3,
+      yearsOfExperience: 4,
       proficiency: SkillProficiency.Advanced,
       category: SkillCategory.Other,
     },
     {
       name: "SQL",
-      yearsOfExperience: 3.5,
+      yearsOfExperience: 4,
       proficiency: SkillProficiency.Advanced,
       category: SkillCategory.Language,
     },
     {
       name: "TypeScript",
-      yearsOfExperience: 2.5,
+      yearsOfExperience: 3,
       proficiency: SkillProficiency.Advanced,
       category: SkillCategory.Language,
     },
@@ -192,8 +198,8 @@ const initialState: SkillState = {
     },
     {
       name: "Docker",
-      yearsOfExperience: 1,
-      proficiency: SkillProficiency.Beginner,
+      yearsOfExperience: 2,
+      proficiency: SkillProficiency.Intermediate,
       category: SkillCategory.Other,
     },
     {
