@@ -49,7 +49,7 @@ const initialState: SkillState = {
     {
       name: "AWS Services",
       yearsOfExperience: 1,
-      proficiency: SkillProficiency.Beginner,
+      proficiency: SkillProficiency.Intermediate,
       category: SkillCategory.CloudService,
     },
     {
@@ -254,6 +254,12 @@ const initialState: SkillState = {
       name: "Google Cloud Services",
       yearsOfExperience: 1.5,
       proficiency: SkillProficiency.SomeKnowledge,
+      category: SkillCategory.CloudService,
+    },
+    {
+      name: "Terraform",
+      yearsOfExperience: 1,
+      proficiency: SkillProficiency.Beginner,
       category: SkillCategory.CloudService,
     },
   ],
