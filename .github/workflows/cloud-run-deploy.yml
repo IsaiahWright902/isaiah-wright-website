@@ -1,7 +1,7 @@
 name: CI/CD Pipeline
 
 env:
-  SERVICE_NAME: IsaiahWrightPortfolio
+  SERVICE_NAME: isaiah-wright-portfolio
 
 on:
   pull_request:
@@ -29,7 +29,7 @@ jobs:
       - name: Set up Docker
         run: |
           docker --version
-          docker build -t IsaiahWrightPortfolio .
+          docker build -t isaiah-wright-portfolio .
 
       - name: Authenticate Docker with AWS ECR
         run: |
@@ -37,7 +37,7 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          docker tag IsaiahWrightPortfolio:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REPO_NAME }}:latest
+          docker tag isaiah-wright-portfolio:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REPO_NAME }}:latest
 
       - name: Push Docker image to ECR
         run: |
