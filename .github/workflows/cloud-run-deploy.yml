@@ -1,7 +1,7 @@
 name: CI/CD Pipeline
 
 env:
-  SERVICE_NAME: next-app-project
+  SERVICE_NAME: IsaiahWrightPortfolio
 
 on:
   pull_request:
@@ -17,29 +17,54 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Google Cloud Auth
-        uses: "google-github-actions/auth@v2"
+      
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          credentials_json: "${{secrets.GCP_SA_KEY}}"
-          project_id: ${{secrets.GCP_PROJECT_ID}}
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
 
-      - name: Set up Cloud SDK
-        uses: "google-github-actions/setup-gcloud@v2"
-
-      - name: Configure Docker
+      - name: Set up Docker
         run: |
-          gcloud auth configure-docker
+          docker --version
+          docker build -t IsaiahWrightPortfolio .
 
-      - name: Build and Push Docker Image
+      - name: Authenticate Docker with AWS ECR
         run: |
-          docker build -t gcr.io/${{secrets.GCP_PROJECT_ID}}/${{secrets.DOCKER_IMAGE_NAME}}:latest .
-          docker push gcr.io/${{secrets.GCP_PROJECT_ID}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
+          aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
 
-      - name: Deploy to Cloud Run
+      - name: Tag Docker Image
         run: |
-          gcloud run deploy isaiah-wright-website \
-            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest \
-            --platform managed \
-            --region us-east1 \
-            --allow-unauthenticated
+          docker tag IsaiahWrightPortfolio:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REPO_NAME }}:latest
+
+      - name: Push Docker image to ECR
+        run: |
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secreats.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPO_NAME }}:latest
+
+    #  OLD CODE
+      # - name: Google Cloud Auth
+      #   uses: "google-github-actions/auth@v2"
+      #   with:
+      #     credentials_json: "${{secrets.GCP_SA_KEY}}"
+      #     project_id: ${{secrets.GCP_PROJECT_ID}}
+
+      # - name: Set up Cloud SDK
+      #   uses: "google-github-actions/setup-gcloud@v2"
+
+      # - name: Configure Docker
+      #   run: |
+      #     gcloud auth configure-docker
+
+      # - name: Build and Push Docker Image
+      #   run: |
+      #     docker build -t gcr.io/${{secrets.GCP_PROJECT_ID}}/${{secrets.DOCKER_IMAGE_NAME}}:latest .
+      #     docker push gcr.io/${{secrets.GCP_PROJECT_ID}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
+
+      # - name: Deploy to Cloud Run
+      #   run: |
+      #     gcloud run deploy isaiah-wright-website \
+      #       --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest \
+      #       --platform managed \
+      #       --region us-east1 \
+      #       --allow-unauthenticated
