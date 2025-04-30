@@ -16,9 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
+      # Set up AWS CLI
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -29,7 +31,7 @@ jobs:
       - name: Set up Docker
         run: |
           docker --version
-          docker build -t isaiah-wright-portfolio-repo .
+          docker build -t ${{ secrets.SERVICE_NAME }}:latest .
 
       - name: Authenticate Docker with AWS ECR
         run: |
@@ -37,11 +39,12 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          docker tag isaiah-wright-portfolio-repo:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REPO_NAME }}:latest
+          docker tag ${{ secrets.SERVICE_NAME }}:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPO_NAME }}:latest
 
       - name: Push Docker image to ECR
         run: |
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPO_NAME }}:latest
+
 
     #  OLD CODE
       # - name: Google Cloud Auth
