@@ -9,6 +9,7 @@ on:
       - "master"
     types:
       - closed
+  workflow_dispatch:
 
 jobs:
   dockerize-and-deploy:
