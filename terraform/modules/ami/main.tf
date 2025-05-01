@@ -1,18 +1,16 @@
-# Fetches the most recent Amazon Linux 2 AMI that matches the filter criteria
-data "aws_ami" "latest_amazon_linux" {
+# fetches ami image
+data "aws_ami" "ubuntu" {
   most_recent = true
 
-  # Only fetch AMI's published by Amazon
-  owners = [var.ami_owner]
-
-  # Filter for Amazon Linux 2 general purpose images
   filter {
-    name = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 
   filter {
-    name = "virtualization-type"
-    values = [ "hvm" ]
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
+
+  owners = ["099720109477"] # Canonical
 }

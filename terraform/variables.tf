@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "instance_type" {
   type = string
-  default = "t3a.nano"
+  default = "t2.micro"
 }
 
 variable "base_project_name" {
