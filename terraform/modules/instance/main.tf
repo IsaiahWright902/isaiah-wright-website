@@ -51,17 +51,14 @@ resource "aws_instance" "web" {
               $(aws ecr get-login-password --region ${var.aws_region} | docker login --username AWS --password-stdin ${var.ecr_registry})
 
               # Pull the Docker image from ECR
-              docker pull ${var.ecr_registry}/${var.image_name}:latest
+              docker pull ${var.image_uri}
 
               # Run the Docker container
-              docker run -d -p 80:3000 --restart always ${var.ecr_registry}/${var.image_name}:latest
+              docker run -d -p 3000:3000 --restart always ${var.image_uri}
               EOF
   )
 
   tags = {
     Name = "${var.project_name}-web-instance"
   }
-
-
-
 }

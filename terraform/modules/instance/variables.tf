@@ -27,7 +27,7 @@ variable "aws_region" {
   type = string
 }
 
-variable "image_name" {
+variable "image_uri" {
   type = string
 }
 
