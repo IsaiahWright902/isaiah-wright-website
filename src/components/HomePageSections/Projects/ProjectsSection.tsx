@@ -18,6 +18,12 @@ export default function ProjectsSection() {
         "A form builder that enables a user to create there own custom forms with their own custom formulas.",
       link: "/custom-equation-builder",
     },
+    {
+      title: "Github Repo Cleaner",
+      description:
+        "A simple tool to bulk delete old or unused repositories from your GitHub account. Authentication is handled via GitHub SSO using a GitHub OAuth App that you configure.",
+      link: "/git-repo-cleaner",
+    },
   ];
 
   return (
