@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import HeadShot from "@public/headshotNew.jpeg";
+import UpdatedHeadShot from "@public/updatedHeadshot.jpg"
 import { coreSelectors } from "@/store/CoreState/selector";
 import { theme } from "@/theme/ThemeRegistry";
 import AboutStyles from "./AboutStyles.module.css";
@@ -91,7 +92,8 @@ export default function AboutSection() {
                 }}
               >
                 <Image
-                  src={HeadShot}
+                  // src={HeadShot}
+                  src={UpdatedHeadShot}
                   alt="Headshot"
                   className={AboutStyles.heroImage}
                   width={0}
