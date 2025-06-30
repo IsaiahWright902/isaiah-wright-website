@@ -1,7 +1,7 @@
 name: CI/CD Pipeline
 
 env:
-  SERVICE_NAME: isaiah-wright-portfolio-repo
+  SERVICE_NAME: next-app-project
 
 on:
   pull_request:
