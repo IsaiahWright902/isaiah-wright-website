@@ -47,8 +47,8 @@ export default function GithubRepoCleaner() {
                 </Grid>
                 <Grid item xs={12} >
                     <Typography>
-                        This was a super fun project to put together, and I'm excited to share it.
-                        If you're curious about how it works under the hood, hit the button below to dive into the details. Happy repo cleaning!
+                        This was a super fun project to put together, and I&apos;m excited to share it.
+                        If you&apos;re curious about how it works under the hood, hit the button below to dive into the details. Happy repo cleaning!
                     </Typography>
                 </Grid>
                 <Grid item xs={12} >
