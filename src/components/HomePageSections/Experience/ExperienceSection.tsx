@@ -12,13 +12,30 @@ export default function ExperienceSection() {
   const experienceItems: ExperienceItemDTO[] = [
     {
       companyName: "Tyler Technologies",
-      position: "Software Engineer",
-      startDate: "May 2024",
+      position: "Cloud Ops Engineer",
+      startDate: "May 2025",
       endDate: "Present",
       location: "Remote, United States",
       bulletPoints: [
+        "Engineered secure AWS cross-account access using IAM trust policies and tag-based controls, enabling local and programmatic automation.",
+        "Delivered a full AWS Aurora Blue/Green Deployment automation project (Terraform, IAM, Rundeck, Vault, API integration) from concept to production within a three-week timeline.",
+        "Achieved zero downtime across 75+ Aurora PostgreSQL clusters by implementing automated blue/green upgrade pipelines, ensuring seamless major engine version upgrades.",
+        "Modernized a legacy .NET tool by upgrading outdated SSH libraries and refactoring core logic, improving performance and reliability resolving multiple years of tech debt.",
+        "Designed and maintained Terraform-based Infrastructure as Code (IaC) to standardize AWS provisioning, reduce manual setup time, and improve configuration consistency.",
+        "Develop custom Python and Bash automation scripts to extend Terraform functionality and support operational monitoring and remediation tasks.",
+      ],
+      logo: TylerTechLogo,
+      logoMaxWidth: "325px",
+    },
+    {
+      companyName: "Tyler Technologies",
+      position: "Software Engineer",
+      startDate: "May 2024",
+      endDate: "May 2025",
+      location: "Remote, United States",
+      bulletPoints: [
         "Resolved bug and feature tickets using C# .NET, and Angular enhancing application functionality and user experience by systematically identifying and addressing issues to improve overall system performance.",
-        "Led multiple code refactors, breaking code into cleaner, more readable components, resulting in an impressive 80% increase in processing speed on key workflows, which significantly improved application responsiveness.",
+        "Led multiple code refactors, breaking code into cleaner, more readable components, resulting in an 80% increase in processing speed on key workflows, which significantly improved application responsiveness.",
         "Collaborated with cross-departmental teams to understand and integrate shared and external services, effectively sharing insights and best practices to enhance overall operational efficiency.",
         "Assisted in developing a comprehensive documentation strategy in collaboration with leadership, streamlining processes and improving team knowledge sharing and onboarding for new members.",
         "Facilitated team training sessions, providing tailored learning resources on modern best practices and fostering a culture of continuous improvement and technical growth.",
