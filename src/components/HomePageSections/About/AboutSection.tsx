@@ -41,24 +41,19 @@ export default function AboutSection() {
               Isaiah Wright,
             </Typography>
             <Typography variant="h3" textAlign={{ xs: "center", md: "left" }}>
-              I build full stack applications {isMobile ? null : ":)"}
+             I build reliable cloud systems {isMobile ? null : ":)"}
             </Typography>
             <Typography variant="body1">
-              I have always been interested in computers and how they work. When
-              I click a button I find myself asking: Why does something happen?
-              What is the process and how does this work? These questions would
-              swirl around my head and I was determined to find an answer. The
-              more knowledge I gained about computers, I found myself wanting to
-              understand them further and began building applications.
+              I’ve always been the kind of person who asks why — sometimes too much. 
+              When something works, I want to know how. When it breaks, I want to know why it ever worked in the first place. 
+              That curiosity pulled me into software development early on, and eventually into CloudOps, 
+              where I get to think about systems end to end — from application code to the infrastructure that keeps it running.
             </Typography>
             <Typography variant="body1">
-              To my luck there was a great coding bootcamp in my area where I
-              could go to professionally grow my skills. I went through the 13
-              week program, every week asking myself even more questions. As I
-              learned about the industry I fell in love with it even more. I
-              enjoyed learning how to develop applications, making me realize
-              that software development was a passion of mine. I love what i do,
-              and I strive to make everything I work on the best it can be.
+              With a full-stack development background, I’m comfortable on both sides of the fence and often find myself bridging 
+              the gap between developers and infrastructure. I’m comfortable speaking up when something can be done better, 
+              especially if it helps reduce friction or improve reliability. 
+              I enjoy translating requirements, building automation, and creating tools that make people’s lives easier instead of harder.
             </Typography>
           </Stack>
         </Grid>
@@ -112,12 +107,10 @@ export default function AboutSection() {
       </Grid>
       <Grid container spacing={2} pt={2}>
         <Grid item xs={12}>
-          I am very challenge motivated. Some of my strengths are determination,
-          discipline, commitment and grit. I am a dedicated individual and do
-          not give up easily. I look forward to what life has to offer me and
-          view everything optimistically. I am excited to push myself to grow
-          both personally and professionally. I am a great team player and enjoy
-          encouraging those around me.
+          I’m motivated by challenge and continuous improvement, and I enjoy working closely with others to solve hard problems. 
+          I bring curiosity, persistence, and a positive attitude to the teams I work with, 
+          and I value clear communication and shared ownership. 
+          I’m always looking for opportunities to grow, contribute, and make both systems and teams stronger.
         </Grid>
       </Grid>
     </Container>

@@ -95,7 +95,7 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
                 <Typography
                   sx={{ color: "white !important", cursor: "pointer" }}
                 >
-                  - Full Stack Developer
+                  - Cloud Ops Engineer
                 </Typography>
               )}
             </Stack>
