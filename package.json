@@ -34,7 +34,7 @@
     "redux-persist": "^6.0.0",
     "reselect": "^5.1.0",
     "sharp": "^0.33.5",
-    "zod": "^3.22.4"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",
