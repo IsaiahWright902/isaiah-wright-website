@@ -18,7 +18,7 @@ jobs:
     steps:
       # Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       #  GCP - cheaper so its where the site lives
       - name: Google Cloud Auth
