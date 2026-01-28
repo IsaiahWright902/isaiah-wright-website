@@ -24,12 +24,11 @@ export default function WelcomeStep4({
   return (
     <>
       <Typography>
-        Oops, color calamity! Not feeling the vibes? No sweat, chief artist!
-        It&apos;s time to break free from the palette prison and embark on a
-        wild color safari with your very own picker. Show those hues who&apos;s
-        boss and find the shade that screams &apos;you.&apos; Let&apos;s paint
-        the town... err, website, red, blue, or whatever color tickles your
-        fancy!
+        Well this is awkward. Fair enough — my presets didn&apos;t quite work for you.
+      </Typography>
+      <Typography>
+        Use the color picker below to create your own.
+        Whatever you pick will be applied across the site.
       </Typography>
       <Stack alignItems="center" justifyContent="center" pt={2}>
         <SketchPicker

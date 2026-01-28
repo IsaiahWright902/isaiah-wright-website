@@ -29,12 +29,9 @@ export default function WelcomeStep2({
   return (
     <>
       <Typography>
-        Next up! You are the art director of your own experience! Your journey
-        through my website begins with a choice – the color that resonates with
-        you. Let&apos;s paint this canvas together and make your visit truly
-        vibrant!
+        Next, pick a color. Your choice influences the UI throughout the site — buttons, dividers, accents, that kind of thing.
+        You can always change it later from the navbar.
       </Typography>
-      <Typography>Please choose a color below!</Typography>
 
       <Stack
         direction="row"
