@@ -61,7 +61,7 @@ export default function Footer({ links }: { links: PortfolioLink[] }) {
             >
               Isaiah Wright
             </Typography>
-            <FooterHeading title="Full Stack Developer" variant="subtitle1" />
+            <FooterHeading title="Cloud Ops Engineer" variant="subtitle1" />
           </Grid>
 
           {isMobile && <FooterDivider />}
