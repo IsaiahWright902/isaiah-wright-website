@@ -67,16 +67,16 @@ export default function Footer({ links }: { links: PortfolioLink[] }) {
           {isMobile && <FooterDivider />}
           <Grid item xs={12} md={4}>
             <FooterHeading title="Portfolio Overview:" />
-            {/* <FooterItem
-              title="Portfolio UI"
+            <FooterItem
+              title="Overview"
+              path="/overview"
+              handleLinkClick={handleLinkClick}
+            />
+            <FooterItem
+              title="Portfolio UI/UX"
               path="/portfolio-ui"
               handleLinkClick={handleLinkClick}
-            /> */}
-            {/* <FooterItem
-              title="Technical Decisions"
-              path="/technical-decisions"
-              handleLinkClick={handleLinkClick}
-            /> */}
+            />
             <FooterItem
               title="Github Repository"
               path="https://github.com/IsaiahWright902/isaiah-wright-website"

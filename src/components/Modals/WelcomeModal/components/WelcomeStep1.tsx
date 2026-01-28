@@ -20,17 +20,14 @@ export default function WelcomeStep1({
   return (
     <>
       <Typography>
-        Welcome! I&apos;m Isaiah, and I&apos;m thrilled to welcome you to my
-        website. It&apos;s truly an honor to have you here.
+        Hey! I&apos;m Isaiah. Thanks for stopping by.
       </Typography>
       <Typography>
-        It looks like this may be your first time visiting my site. I&apos;ve
-        crafted it with a variety of functionalities to showcase my skills and
-        deep passion for software development. I hope you find it both
-        informative and engaging.
+        Since this looks like your first visit, I built in a few customization options.
+        The site responds to your choices — pick what works for you, and it&apos;ll stick around for next time.
       </Typography>
       <Typography>
-        First things first! Do you prefer Light Mode or Dark Mode?
+        First up: Light Mode or Dark Mode?
       </Typography>
       <Stack
         direction="row"

@@ -15,18 +15,15 @@ export default function WelcomeStep3({
   return (
     <>
       <Typography>
-        Fantastic choice! Your color preferences are now the guiding stars as we
-        set the stage for an exciting journey through my website.
+        All set. Your preferences are saved and will persist across visits.
       </Typography>
       <Typography>
-        You can change these settings via the two buttons on the Navbar at
-        anytime.
+        You can update these settings anytime using the theme and color buttons in the navbar.
       </Typography>
       <Typography>
-        Get ready to embark on a thrilling exploration of creativity and
-        innovation, where each project is a unique chapter waiting to unfold.
-        So, kick back, relax, and let&apos;s discover together if I&apos;m the
-        right developer to bring your visions to life!
+        Thanks for taking the time to personalize your experience. Explore the site to learn more about my work,
+        technical background, and approach to building reliable systems. If you&apos;d like to connect or discuss
+        a project, I&apos;d be happy to hear from you :)
       </Typography>
       <Stack
         direction="column"

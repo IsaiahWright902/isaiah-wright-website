@@ -38,7 +38,7 @@ export default function UserChip({ skill }: { skill: Skill }) {
 
   const calculateExperiencePercentage = (yearsOfExperience: number) => {
     const clampedExperience = Math.min(Math.max(yearsOfExperience, 0), 4);
-    const percentage = (clampedExperience / 4) * 100;
+    const percentage = (clampedExperience / 5) * 100;
     return Math.round(percentage * 100) / 100;
   };
 
