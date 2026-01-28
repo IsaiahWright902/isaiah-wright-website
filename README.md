@@ -2,7 +2,7 @@
 
 ![CI/CD Pipeline](https://github.com/IsaiahWright902/isaiah-wright-website/actions/workflows/cloud-run-deploy.yml/badge.svg)
 ![Docker Build](https://github.com/IsaiahWright902/isaiah-wright-website/actions/workflows/docker-build-test.yml/badge.svg)
-[![Lighthouse Score](https://img.shields.io/badge/Lighthouse-100%2F100-success)](https://isaiahwright.dev)
+![Lighthouse](https://img.shields.io/badge/Lighthouse-97.5%2F100-success?logo=lighthouse)
 
 **Live Site:** [isaiahwright.dev](https://isaiahwright.dev)
 
