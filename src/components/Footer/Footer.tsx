@@ -41,11 +41,7 @@ export default function Footer({ links }: { links: PortfolioLink[] }) {
           : theme.palette.black.main,
       }}
     >
-      <Container
-        sx={{
-          margin: isMobile ? "non" : "0px 165px",
-        }}
-      >
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 6 } }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={4}>
             <Typography

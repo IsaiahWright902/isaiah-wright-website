@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, CssBaseline, useMediaQuery } from "@mui/material";
+import { Box, Container, CssBaseline } from "@mui/material";
 import {
   BreakpointsOptions,
   Components,
@@ -48,35 +48,35 @@ const breakpoints: BreakpointsOptions = {
 const typography: TypographyOptions = {
   fontFamily: poppins.style.fontFamily,
   h1: {
-    fontSize: "47px",
+    fontSize: "clamp(28px, 4vw, 47px)",
     fontWeight: 400,
   },
   h2: {
-    fontSize: "38px",
+    fontSize: "clamp(24px, 3.2vw, 38px)",
   },
   h3: {
-    fontSize: "28px",
+    fontSize: "clamp(20px, 2.5vw, 28px)",
   },
   h4: {
-    fontSize: "24px",
+    fontSize: "clamp(17px, 2vw, 24px)",
     fontWeight: 300,
   },
   h5: {
-    fontSize: "20px",
+    fontSize: "clamp(15px, 1.8vw, 20px)",
     fontWeight: 100,
   },
   body1: {
-    fontSize: "18px",
+    fontSize: "clamp(14px, 1.5vw, 18px)",
   },
   body2: {
-    fontSize: "18px",
+    fontSize: "clamp(14px, 1.5vw, 18px)",
     fontWeight: 400,
   },
   subtitle1: {
-    fontSize: "16px",
+    fontSize: "clamp(13px, 1.3vw, 16px)",
   },
   subtitle2: {
-    fontSize: "16px",
+    fontSize: "clamp(13px, 1.3vw, 16px)",
     fontWeight: 400,
   },
 };
@@ -132,7 +132,6 @@ export default function ThemeRegistry({
 }: {
   children: React.ReactNode;
 }) {
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const useLightMode = useAppSelector(coreSelectors.useLightMode);
   const userColor = useAppSelector(coreSelectors.userColor);
 
@@ -247,8 +246,10 @@ export default function ThemeRegistry({
         <Navbar links={links} />
         <ModalRegistry />
         <Container
+          maxWidth="lg"
           sx={{
-            padding: isMobile ? "16px " : "64px 128px",
+            px: { xs: 2, sm: 3, md: 4, lg: 6 },
+            py: { xs: 2, sm: 3, md: 5, lg: 8 },
             minHeight: "100vh",
           }}
         >

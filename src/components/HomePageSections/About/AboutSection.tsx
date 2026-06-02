@@ -15,6 +15,7 @@ import { coreSelectors } from "@/store/CoreState/selector";
 import { theme } from "@/theme/ThemeRegistry";
 import AboutStyles from "./AboutStyles.module.css";
 import { useAppSelector } from "@/store/store";
+import GitHubStats from "./GitHubStats";
 
 export default function AboutSection() {
   const userColor = useAppSelector(coreSelectors.userColor);
@@ -41,18 +42,18 @@ export default function AboutSection() {
               Isaiah Wright,
             </Typography>
             <Typography variant="h3" textAlign={{ xs: "center", md: "left" }}>
-             I build reliable cloud systems {isMobile ? null : ":)"}
+              I build reliable cloud systems {isMobile ? null : ":)"}
             </Typography>
             <Typography variant="body1">
-              I’ve always been the kind of person who asks why — sometimes too much. 
-              When something works, I want to know how. When it breaks, I want to know why it ever worked in the first place. 
-              That curiosity pulled me into software development early on, and eventually into CloudOps, 
+              I’ve always been the kind of person who asks why — sometimes too much.
+              When something works, I want to know how. When it breaks, I want to know why it ever worked in the first place.
+              That curiosity pulled me into software development early on, and eventually into CloudOps,
               where I get to think about systems end to end — from application code to the infrastructure that keeps it running.
             </Typography>
             <Typography variant="body1">
-              With a full-stack development background, I’m comfortable on both sides of the fence and often find myself bridging 
-              the gap between developers and infrastructure. I’m comfortable speaking up when something can be done better, 
-              especially if it helps reduce friction or improve reliability. 
+              With a full-stack development background, I’m comfortable on both sides of the fence and often find myself bridging
+              the gap between developers and infrastructure. I’m comfortable speaking up when something can be done better,
+              especially if it helps reduce friction or improve reliability.
               I enjoy translating requirements, building automation, and creating tools that make people’s lives easier instead of harder.
             </Typography>
           </Stack>
@@ -107,12 +108,14 @@ export default function AboutSection() {
       </Grid>
       <Grid container spacing={2} pt={2}>
         <Grid item xs={12}>
-          I’m motivated by challenge and continuous improvement, and I enjoy working closely with others to solve hard problems. 
-          I bring curiosity, persistence, and a positive attitude to the teams I work with, 
-          and I value clear communication and shared ownership. 
+          I’m motivated by challenge and continuous improvement, and I enjoy working closely with others to solve hard problems.
+          I bring curiosity, persistence, and a positive attitude to the teams I work with,
+          and I value clear communication and shared ownership.
           I’m always looking for opportunities to grow, contribute, and make both systems and teams stronger.
         </Grid>
       </Grid>
+      {/* GitHub live stats — uncomment to show */}
+      {/* <GitHubStats /> */}
     </Container>
   );
 }

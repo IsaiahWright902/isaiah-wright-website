@@ -33,11 +33,10 @@ export default function ExperienceItem({
       <Paper
         elevation={4}
         sx={{
-          minHeight: "400px",
           borderRadius: "16px",
           border: `1px solid ${userColor}`,
           padding: { xs: 2.5, md: 5 },
-        }}
+          }}
       >
         <Grid
           container
@@ -45,7 +44,7 @@ export default function ExperienceItem({
           alignItems="center"
           flexDirection={{ xs: "column-reverse", md: "row" }}
         >
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <Stack
               spacing={2}
               className={ExperienceStyles.alignTextCenter}
@@ -55,17 +54,13 @@ export default function ExperienceItem({
             >
               <Typography variant="h3">{experienceItem.companyName}</Typography>
               <Typography variant="h4">{experienceItem.position}</Typography>
-              <Typography
-                variant="h5"
-                textAlign={{ xs: "center", md: "inherit" }}
-                fontSize={{ xs: "16px", md: "20px" }}
-              >
+              <Typography variant="h5" textAlign={{ xs: "center", md: "inherit" }}>
                 {experienceItem.startDate} - {experienceItem.endDate}
               </Typography>
               <Typography variant="h5">{experienceItem.location}</Typography>
             </Stack>
           </Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} md={8}>
             <Stack spacing={2} alignItems={"center"}>
               {useLightMode ? (
                 <Image
