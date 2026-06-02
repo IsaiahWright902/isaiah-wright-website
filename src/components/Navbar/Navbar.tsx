@@ -58,13 +58,8 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
           : theme.palette.black.main,
       }}
     >
-      <Container maxWidth="xl">
-        <Toolbar
-          disableGutters
-          sx={{
-            margin: isMobile ? "non" : "0px 165px",
-          }}
-        >
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 6 } }}>
+        <Toolbar disableGutters>
           <Stack
             direction="row"
             alignItems="center"

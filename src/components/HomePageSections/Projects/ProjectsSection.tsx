@@ -31,12 +31,7 @@ export default function ProjectsSection() {
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Typography>
-            Welcome to my dynamic project showcase! This site is your gateway to
-            witnessing the evolution of my creative endeavors. I built this site
-            to support many different side projects all within a single deployed
-            environment. Here, I continually add new projects, testing ideas and
-            sharing the outcomes with you. Join me on this journey of
-            exploration and innovation!
+            A collection of side projects I've built to explore ideas, try out new tech, and solve problems I find interesting. More on the way.
           </Typography>
         </Grid>
         {projects.map((project, idx) => (
