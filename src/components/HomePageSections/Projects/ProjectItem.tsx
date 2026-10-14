@@ -1,63 +1,120 @@
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Chip, Grid, Paper, Stack, Typography } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import Image from "next/image";
+import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { ProjectMapItem } from "./ProjectsSection";
 import { useAppSelector } from "@/store/store";
 import { coreSelectors } from "@/store/CoreState/selector";
-import { useState } from "react";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useRouter } from "next/navigation";
+import { spotlightSx, trackPointer } from "@/components/Spotlight/spotlight";
 
 export default function ProjectItem({ project }: { project: ProjectMapItem }) {
-  const router = useRouter();
   const userColor = useAppSelector(coreSelectors.userColor);
-  const [isHovered, setIsHovered] = useState(false);
+  const { featured, external, image } = project;
 
-  const handleClick = () => {
-    router.push(project.link);
-  };
+  const linkProps = external
+    ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
+    : { href: project.link };
 
   return (
-    <Grid
-      item
-      xs={12}
-      sm={4}
-      onClick={handleClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      sx={{ cursor: "pointer" }}
-    >
+    <Grid item xs={12} sm={featured ? 12 : 6}>
       <Paper
-        elevation={isHovered ? 10 : 4}
+        component={external ? "a" : Link}
+        {...linkProps}
+        onPointerMove={trackPointer}
+        elevation={4}
         sx={{
+          position: "relative",
+          display: "flex",
+          flexDirection: { xs: "column", md: featured ? "row" : "column" },
+          height: "100%",
+          overflow: "hidden",
+          textDecoration: "none",
+          color: "inherit",
           border: `1px solid ${userColor}`,
           borderRadius: "8px",
-          height: "100%",
+          transition:
+            "transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms",
+          ...spotlightSx(userColor),
+          "&:hover, &:focus-visible": {
+            transform: "translateY(-3px)",
+            boxShadow: 10,
+          },
+          "&:hover .project-arrow, &:focus-visible .project-arrow": {
+            transform: "translateX(4px)",
+          },
+          "&:active": { transform: "translateY(-1px) scale(0.995)" },
+          "@media (prefers-reduced-motion: reduce)": {
+            transition: "none",
+            "&:hover, &:focus-visible, &:active": { transform: "none" },
+            "& .project-arrow": { transition: "none" },
+          },
         }}
       >
-        <Box sx={{ padding: "10px", height: "100%" }}>
-          <Stack
-            spacing={2}
-            justifyContent="space-between"
-            sx={{ height: "100%" }}
+        {image && (
+          <Box
+            sx={{
+              position: "relative",
+              flex: { md: "0 0 55%" },
+              minHeight: { xs: 200, md: 300 },
+              borderBottom: {
+                xs: `1px solid ${alpha(userColor, 0.5)}`,
+                md: "none",
+              },
+              borderRight: {
+                md: `1px solid ${alpha(userColor, 0.5)}`,
+              },
+            }}
           >
-            <Stack spacing={2}>
-              <Typography variant="h5">{project.title}</Typography>
-              <Typography>{project.description}</Typography>
-            </Stack>
-
-            <Stack
-              direction="row"
-              alignItems="center"
-              spacing={1}
-              sx={{
-                opacity: isHovered ? 1 : 0,
-                transition: "all 1s",
-              }}
-            >
-              <Typography variant="subtitle1">View Project</Typography>
-              <ArrowForwardIcon fontSize="small" />
-            </Stack>
+            <Image
+              src={image}
+              alt={project.imageAlt ?? project.title}
+              fill
+              sizes="(min-width: 900px) 55vw, 100vw"
+              style={{ objectFit: "cover", objectPosition: "top left" }}
+            />
+          </Box>
+        )}
+        <Stack
+          spacing={2}
+          justifyContent="space-between"
+          sx={{ p: { xs: 2, md: 3 }, flex: 1 }}
+        >
+          <Stack spacing={1.5}>
+            <Typography variant={featured ? "h3" : "h5"} sx={{ fontWeight: 400 }}>
+              {project.title}
+            </Typography>
+            <Typography>{project.description}</Typography>
+            {project.tags && (
+              <Stack direction="row" flexWrap="wrap" gap={1} pt={0.5}>
+                {project.tags.map((tag) => (
+                  <Chip
+                    key={tag}
+                    label={tag}
+                    size="small"
+                    variant="outlined"
+                    sx={{ borderColor: alpha(userColor, 0.6) }}
+                  />
+                ))}
+              </Stack>
+            )}
           </Stack>
-        </Box>
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
+              {external ? "Visit site" : "View project"}
+            </Typography>
+            {external ? (
+              <OpenInNewIcon fontSize="small" />
+            ) : (
+              <ArrowForwardIcon
+                fontSize="small"
+                className="project-arrow"
+                sx={{ transition: "transform 300ms cubic-bezier(0.16, 1, 0.3, 1)" }}
+              />
+            )}
+          </Stack>
+        </Stack>
       </Paper>
     </Grid>
   );

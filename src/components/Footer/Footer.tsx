@@ -48,8 +48,7 @@ export default function Footer({ links }: { links: PortfolioLink[] }) {
               onClick={() => handleLinkClick("/")}
               variant="h5"
               sx={{
-                fontFamily: "monospace",
-                letterSpacing: ".2rem",
+                fontWeight: 600,
                 textDecoration: "none",
                 color: "white !important",
                 cursor: "pointer",
@@ -109,8 +108,6 @@ function FooterHeading({
     <Typography
       variant={variant as any}
       sx={{
-        fontFamily: "monospace",
-        letterSpacing: ".2rem",
         textDecoration: "none",
         color: "white !important",
       }}

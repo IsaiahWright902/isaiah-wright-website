@@ -9,6 +9,7 @@ export enum SkillCategory {
   CloudService = 5,
   Other = 6,
   SoftSkill = 7,
+  Infrastructure = 8,
 }
 
 export type Skill = {
@@ -80,7 +81,7 @@ const initialState: SkillState = {
       name: "Git",
       yearsOfExperience: 5,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "HTML",
@@ -170,7 +171,7 @@ const initialState: SkillState = {
       name: "Source & Version Control",
       yearsOfExperience: 5,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "SQL",
@@ -200,7 +201,7 @@ const initialState: SkillState = {
       name: "Docker",
       yearsOfExperience: 3,
       proficiency: SkillProficiency.Intermediate,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "MySQL",
@@ -230,13 +231,13 @@ const initialState: SkillState = {
       name: "SendGrid",
       yearsOfExperience: 2,
       proficiency: SkillProficiency.Intermediate,
-      category: SkillCategory.CloudService,
+      category: SkillCategory.BackEnd,
     },
     {
       name: "Twilio SMS",
       yearsOfExperience: 2,
       proficiency: SkillProficiency.Intermediate,
-      category: SkillCategory.CloudService,
+      category: SkillCategory.BackEnd,
     },
     {
       name: "Expo",
@@ -260,7 +261,7 @@ const initialState: SkillState = {
       name: "Terraform",
       yearsOfExperience: 3,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.CloudService,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "Python",
@@ -290,31 +291,31 @@ const initialState: SkillState = {
       name: "CI/CD Pipelines",
       yearsOfExperience: 4,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "Ansible",
       yearsOfExperience: 2,
       proficiency: SkillProficiency.Intermediate,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "Rundeck",
       yearsOfExperience: 2,
       proficiency: SkillProficiency.Intermediate,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "HashiCorp Vault",
       yearsOfExperience: 2,
       proficiency: SkillProficiency.Intermediate,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     },
     {
       name: "SSH",
       yearsOfExperience: 3,
       proficiency: SkillProficiency.Advanced,
-      category: SkillCategory.Other,
+      category: SkillCategory.Infrastructure,
     }
   ],
 };

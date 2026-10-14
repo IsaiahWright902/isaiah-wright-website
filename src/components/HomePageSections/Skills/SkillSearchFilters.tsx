@@ -185,6 +185,9 @@ export default function SkillSearchFilters() {
             Database Technology
           </MenuItem>
           <MenuItem value={SkillCategory.CloudService}>Cloud Services</MenuItem>
+          <MenuItem value={SkillCategory.Infrastructure}>
+            DevOps and Infrastructure
+          </MenuItem>
           <MenuItem value={SkillCategory.SoftSkill}>Soft Skill</MenuItem>
           <MenuItem value={SkillCategory.Other}>Other</MenuItem>
         </TextField>

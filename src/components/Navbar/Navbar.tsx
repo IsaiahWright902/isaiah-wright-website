@@ -76,9 +76,7 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
                 variant="h6"
                 noWrap
                 sx={{
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
+                  fontWeight: 600,
                   textDecoration: "none",
                   color: "white !important",
                   cursor: "pointer",
@@ -88,9 +86,16 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
               </Typography>
               {!isMobile && (
                 <Typography
-                  sx={{ color: "white !important", cursor: "pointer" }}
+                  sx={{
+                    color: "white !important",
+                    cursor: "pointer",
+                    opacity: 0.85,
+                    pl: 1.5,
+                    ml: 1.5,
+                    borderLeft: "1px solid rgba(255, 255, 255, 0.4)",
+                  }}
                 >
-                  - Cloud Ops Engineer
+                  Cloud Ops Engineer
                 </Typography>
               )}
             </Stack>
@@ -103,7 +108,7 @@ export default function Navbar({ links }: { links: PortfolioLink[] }) {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
-                  color="inherit"
+                  sx={{ color: "white" }}
                 >
                   <MenuIcon />
                 </IconButton>

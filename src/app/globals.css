@@ -16,3 +16,65 @@
   from { opacity: 0; transform: translateX(-36px); }
   to   { opacity: 1; transform: translateX(0); }
 }
+
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-progress {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      z-index: 1400;
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      animation: scrollProgressFill linear both;
+      animation-timeline: scroll(root block);
+      pointer-events: none;
+    }
+  }
+}
+
+@keyframes scrollProgressFill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-rise {
+  animation: heroRise 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 110ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+  }
+}
+
+@keyframes phraseIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

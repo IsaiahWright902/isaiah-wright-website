@@ -24,7 +24,7 @@ export default function WelcomeStep4({
   return (
     <>
       <Typography>
-        Well this is awkward. Fair enough — my presets didn&apos;t quite work for you.
+        Well this is awkward. Fair enough. My presets didn&apos;t quite work for you.
       </Typography>
       <Typography>
         Use the color picker below to create your own.
