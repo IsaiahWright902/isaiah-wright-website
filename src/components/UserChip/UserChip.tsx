@@ -8,18 +8,14 @@ import {
 } from "@/store/SkillState/reducer";
 import { useAppSelector } from "@/store/store";
 import { theme } from "@/theme/ThemeRegistry";
-import {
-  getAnalogousColor,
-  getTextColorBasedOnUserColor,
-  hexToRgbA,
-} from "@/utils/general-utils";
+import { getAnalogousColor } from "@/utils/general-utils";
 import { Box, Chip, Stack, Tooltip, Typography, Zoom } from "@mui/material";
+import { alpha } from "@mui/material/styles";
 import React from "react";
 import { PieChart, Pie, ResponsiveContainer } from "recharts";
 
 export default function UserChip({ skill }: { skill: Skill }) {
   const userColor = useAppSelector(coreSelectors.userColor);
-  const useLightMode = useAppSelector(coreSelectors.useLightMode);
 
   const getProficiencyPercent = (val: SkillProficiency) => {
     switch (val) {
@@ -166,15 +162,16 @@ export default function UserChip({ skill }: { skill: Skill }) {
       >
         <Chip
           label={skill?.name}
+          variant="outlined"
           sx={{
-            background: userColor,
-            fontSize: "16px",
+            fontSize: "15px",
             cursor: "pointer",
-            color: getTextColorBasedOnUserColor(userColor),
+            borderColor: alpha(userColor, 0.6),
+            bgcolor: alpha(userColor, 0.08),
+            transition: "background-color 0.2s, border-color 0.2s",
             "&:hover": {
-              boxShadow: `0 4px 8px ${
-                useLightMode ? "rgba(0, 0, 0, 0.4)" : hexToRgbA("#f0f2f5", 0.4)
-              } `,
+              bgcolor: alpha(userColor, 0.24),
+              borderColor: userColor,
             },
           }}
         />

@@ -17,7 +17,7 @@ export default function GithubRepoCleaner() {
                     <Typography>
                         Like a lot of devs, I love exploring new ideas and technologies by jumping into code.
                         The result? A ton of Git repos.
-                        At one point, I had over 140—most of them tiny proof-of-concepts or half-baked experiments.
+                        At one point, I had over 140, most of them tiny proof-of-concepts or half-baked experiments.
                     </Typography>
                 </Grid>
                 <Grid item xs={12} spacing={1}>

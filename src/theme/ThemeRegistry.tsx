@@ -15,6 +15,7 @@ import { coreSelectors } from "@/store/CoreState/selector";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import ScrollProgress from "@/components/ScrollProgress/ScrollProgress";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
@@ -243,6 +244,7 @@ export default function ThemeRegistry({
           transition: "all 1s",
         }}
       >
+        <ScrollProgress />
         <Navbar links={links} />
         <ModalRegistry />
         <Container

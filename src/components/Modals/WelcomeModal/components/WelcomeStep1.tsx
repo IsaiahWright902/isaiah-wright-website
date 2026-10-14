@@ -24,7 +24,7 @@ export default function WelcomeStep1({
       </Typography>
       <Typography>
         Since this looks like your first visit, I built in a few customization options.
-        The site responds to your choices — pick what works for you, and it&apos;ll stick around for next time.
+        The site responds to your choices. Pick what works for you, and it&apos;ll stick around for next time.
       </Typography>
       <Typography>
         First up: Light Mode or Dark Mode?

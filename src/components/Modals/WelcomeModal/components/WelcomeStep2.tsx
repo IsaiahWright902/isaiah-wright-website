@@ -29,7 +29,7 @@ export default function WelcomeStep2({
   return (
     <>
       <Typography>
-        Next, pick a color. Your choice influences the UI throughout the site — buttons, dividers, accents, that kind of thing.
+        Next, pick a color. Your choice influences the UI throughout the site: buttons, dividers, accents, that kind of thing.
         You can always change it later from the navbar.
       </Typography>
 

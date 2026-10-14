@@ -3,6 +3,7 @@
 import { coreSelectors } from "@/store/CoreState/selector";
 import { Grid, Typography, Paper, Stack, List } from "@mui/material";
 import { ExperienceBulletPoint } from "./ExperienceBulletPoint";
+import ExperienceHighlights, { HighlightsDTO } from "./ExperienceHighlights";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -19,13 +20,21 @@ export type ExperienceItemDTO = {
   logo: StaticImageData;
   darkModeLogo?: StaticImageData;
   logoMaxWidth: string;
+  highlights?: HighlightsDTO;
+  /** A few words to name this stop on the phone timeline, where there is no room for the full role. */
+  shortLabel?: string;
 };
+
+export type ExperienceView = "highlights" | "resume";
 
 export default function ExperienceItem({
   experienceItem,
+  view = "resume",
 }: {
   experienceItem: ExperienceItemDTO;
+  view?: ExperienceView;
 }) {
+  const showHighlights = view === "highlights" && !!experienceItem.highlights;
   const userColor = useAppSelector(coreSelectors.userColor);
   const useLightMode = useAppSelector(coreSelectors.useLightMode);
   return (
@@ -84,15 +93,19 @@ export default function ExperienceItem({
             </Stack>
           </Grid>
         </Grid>
-        <Grid container spacing={2} alignItems="center" pt={2}>
-          <Grid item xs={12}>
-            <List>
-              {experienceItem.bulletPoints.map((item, idx) => (
-                <ExperienceBulletPoint key={idx} text={item} />
-              ))}
-            </List>
+        {showHighlights ? (
+          <ExperienceHighlights highlights={experienceItem.highlights!} />
+        ) : (
+          <Grid container spacing={2} alignItems="center" pt={2}>
+            <Grid item xs={12}>
+              <List>
+                {experienceItem.bulletPoints.map((item, idx) => (
+                  <ExperienceBulletPoint key={idx} text={item} />
+                ))}
+              </List>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </Paper>
     </Grid>
   );

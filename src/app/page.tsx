@@ -7,14 +7,21 @@ import SkillsSection from "@/components/HomePageSections/Skills/SkillsSection";
 import ExperienceSection from "@/components/HomePageSections/Experience/ExperienceSection";
 import ContactSection from "@/components/HomePageSections/Contact/ContactSection";
 import ProjectsSection from "@/components/HomePageSections/Projects/ProjectsSection";
+import Reveal from "@/components/Reveal/Reveal";
 
 export default function Home() {
   return (
     <Stack spacing={8}>
       <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
+      <Reveal>
+        <SkillsSection />
+      </Reveal>
+      <Reveal>
+        <ExperienceSection />
+      </Reveal>
+      <Reveal>
+        <ProjectsSection />
+      </Reveal>
       {/* <ContactSection /> */}
     </Stack>
   );
